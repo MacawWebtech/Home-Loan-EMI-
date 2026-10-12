@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Settings | Ledgerline Admin</title>
+    <meta
+      name="description"
+      content="Organisation settings, team roles and integrations for forms, newsletter, booking calendar, maps and payments in the Ledgerline admin. Demo data only."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.ledgerline.example/pages/admin-settings.html" />
+    <meta name="theme-color" content="#1c2b45" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ledgerline" />
+    <meta property="og:title" content="Settings | Ledgerline Admin" />
+    <meta
+      property="og:description"
+      content="Organisation settings, team roles and integrations for forms, newsletter, booking calendar, maps and payments in the Ledgerline admin. Demo data only."
+    />
+    <meta property="og:url" content="https://www.ledgerline.example/pages/admin-settings.html" />
+    <meta property="og:image" content="https://www.ledgerline.example/assets/images/og-image.webp" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='10'%20fill='%231c2b45'/%3E%3Cpath%20d='M8%2019%20L20%209%20L32%2019'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M12%2018%20V30%20H28%20V18'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'/%3E%3Cpath%20d='M16%2023%20H24'%20stroke='%23e0835a'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+    />
+    <!-- Bootstrap 5.3.3 + Bootstrap Icons 1.11.3 are bundled in assets/vendor (works offline). CDN alternative in documentation. -->
+    <link id="bs-css" rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <script>
+      /* Pre-paint: apply saved theme + direction before first render (prevents flash) */ (function () {
+        try {
+          var d = document.documentElement,
+            t = localStorage.getItem("ll-theme"),
+            r = localStorage.getItem("ll-dir");
+          d.setAttribute(
+            "data-theme",
+            t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
+          );
+          if (r === "rtl") {
+            d.setAttribute("dir", "rtl");
+            var l = document.getElementById("bs-css");
+            l.href = l.href.replace("bootstrap.min.css", "bootstrap.rtl.min.css");
+          }
+        } catch (e) {}
+        document.addEventListener(
+          "error",
+          function (e) {
+            var i = e.target;
+            if (i && i.tagName === "IMG" && i.dataset.fallback && !i.dataset.fell) {
+              i.dataset.fell = "1";
+              i.removeAttribute("srcset");
+              i.src = i.dataset.fallback;
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Ledgerline Home Loan Advisors",
+        "description": "Independent home loan EMI planning, lender comparison and refinancing advice.",
+        "url": "https://www.ledgerline.example/",
+        "logo": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "image": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "telephone": "+91 44 4000 1234",
+        "email": "hello@ledgerline.example",
+        "priceRange": "Free first consultation",
+        "areaServed": "IN",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4th Floor, 23/12, Cathedral Garden Rd, Nungambakkam",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600034",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1280" },
+        "openingHours": "Mo-Sa 09:30-18:30"
+      }
+    </script>
+  </head>
+  <body class="ll-dash">
+    <a class="ll-skip" href="#main">Skip to main content</a>
+    <div class="ll-app">
+      <aside class="ll-sidebar" id="ll-sidebar" aria-label="Admin navigation">
+        <div class="ll-sidebar-head">
+          <a class="ll-brand" href="../index.html" aria-label="Ledgerline home"
+            ><svg class="ll-brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" width="38" height="38" rx="10" fill="currentColor" opacity=".08" />
+              <path
+                d="M7 19 L20 8 L33 19"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11 18 V31 H29 V18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 23 H25 M15 27 H22"
+                stroke="#a84c25"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              /></svg><span class="ll-brand-name">Ledgerline<small>Admin console</small></span></a
+          ><button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Close menu"
+          >
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav aria-label="Dashboard">
+          <div class="ll-side-label">Workspace</div>
+          <ul class="ll-side-nav pt-0">
+            <li>
+              <a href="admin-dashboard.html"
+                ><i class="bi bi-graph-up" aria-hidden="true"></i><span>Analytics</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-leads.html"
+                ><i class="bi bi-people" aria-hidden="true"></i><span>Leads &amp; users</span
+                ><span class="ll-badge is-accent">12</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-pipeline.html"
+                ><i class="bi bi-kanban" aria-hidden="true"></i><span>Applications</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-calendar.html"
+                ><i class="bi bi-calendar3" aria-hidden="true"></i><span>Consultations</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-messages.html"
+                ><i class="bi bi-chat-square-dots" aria-hidden="true"></i><span>Messages</span
+                ><span class="ll-badge is-accent">5</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-reports.html"
+                ><i class="bi bi-file-earmark-bar-graph" aria-hidden="true"></i><span>Reports</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-settings.html" class="active" aria-current="page"
+                ><i class="bi bi-sliders" aria-hidden="true"></i><span>Settings</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="ll-side-foot">
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start" href="client-dashboard.html"
+            ><i class="bi bi-person" aria-hidden="true"></i>View client portal</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="../index.html"
+            ><i class="bi bi-house" aria-hidden="true"></i>Back to website</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="login.html"
+            ><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a
+          >
+        </div>
+      </aside>
+      <div class="ll-side-backdrop" aria-hidden="true"></div>
+      <div class="ll-app-main">
+        <header class="ll-topbar">
+          <button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+          <form class="ll-topbar-search d-none d-md-block" role="search" action="#">
+            <i class="bi bi-search" aria-hidden="true"></i
+            ><label class="visually-hidden" for="top-q">Search</label
+            ><input class="form-control" id="top-q" type="search" placeholder="Search leads, applications…" />
+          </form>
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <button
+              type="button"
+              class="btn btn-icon"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark mode"
+            >
+              <i class="bi bi-moon-stars" aria-hidden="true"></i></button
+            ><button
+              type="button"
+              class="btn btn-icon"
+              data-rtl-toggle
+              aria-pressed="false"
+              aria-label="Switch to right-to-left layout"
+            >
+              <i class="bi bi-text-right" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-icon position-relative"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Notifications, 3 unread"
+              >
+                <i class="bi bi-bell" aria-hidden="true"></i
+                ><span
+                  class="position-absolute top-0 start-100 translate-middle p-1 rounded-circle"
+                  style="background: var(--ll-accent)"
+                  ><span class="visually-hidden">unread</span></span
+                >
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow" style="min-inline-size: 300px">
+                <li><h2 class="dropdown-header">Notifications</h2></li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-pipeline.html"
+                    ><strong class="d-block small">Credit review started</strong
+                    ><small class="text-muted">Northbank HF · 2 hours ago</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-leads.html"
+                    ><strong class="d-block small">New lead from website</strong
+                    ><small class="text-muted">Yesterday</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-calendar.html"
+                    ><strong class="d-block small">Consultation confirmed</strong
+                    ><small class="text-muted">Thu, 11:30</small></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-ll-ghost d-flex align-items-center gap-2 px-2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="ll-avatar-initials" aria-hidden="true">PR</span
+                ><span class="d-none d-lg-inline text-start lh-sm"
+                  ><strong class="d-block small">Priya Raman</strong
+                  ><small class="text-muted">Principal advisor</small></span
+                ><i class="bi bi-chevron-down small" aria-hidden="true"></i
+                ><span class="visually-hidden">Account menu</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li><a class="dropdown-item" href="admin-settings.html">Profile &amp; settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main id="main" class="ll-app-content">
+          <div class="ll-app-title">
+            <div>
+              <h1>Settings</h1>
+              <p>Organisation, team and integrations.</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2"></div>
+          </div>
+          <div class="row g-3">
+            <div class="col-xl-7 d-flex flex-column gap-3">
+              <section class="ll-panel h-auto" aria-labelledby="org-title">
+                <div class="ll-panel-head"><h2 id="org-title">Organisation</h2></div>
+                <form data-validate data-toast="Organisation settings saved." action="#" method="post">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="o-name">Business name</label
+                      ><input
+                        class="form-control"
+                        id="o-name"
+                        value="Ledgerline Advisory Pvt. Ltd."
+                        required
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="o-reg">DSA registration no.</label
+                      ><input class="form-control ll-num" id="o-reg" value="DSA-XXXX-XXXX" required />
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label" for="o-cur">Currency</label
+                      ><select class="form-select" id="o-cur" aria-describedby="o-cur-help">
+                        <option selected>INR (₹)</option>
+                        <option>AED</option>
+                        <option>USD ($)</option>
+                        <option>GBP (£)</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label" for="o-num">Number format</label
+                      ><select class="form-select" id="o-num">
+                        <option selected>Lakh / crore</option>
+                        <option>Thousand / million</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label" for="o-tz">Time zone</label
+                      ><select class="form-select" id="o-tz">
+                        <option selected>Asia/Kolkata (IST)</option>
+                        <option>Asia/Dubai</option>
+                        <option>Europe/London</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <small class="form-text" id="o-cur-help"
+                        >Demo only. In the template, currency is set once in <code>assets/js/main.js</code> →
+                        <code>CONFIG</code>.</small
+                      >
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label" for="o-disc">Footer disclaimer</label
+                      ><textarea class="form-control" id="o-disc" rows="3">
+Loans are subject to the lender's credit assessment and sole discretion.</textarea>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-ll-primary" type="submit">Save settings</button>
+                    </div>
+                  </div>
+                </form>
+              </section>
+              <section class="ll-panel h-auto" aria-labelledby="team-s-title">
+                <div class="ll-panel-head">
+                  <h2 id="team-s-title">Team &amp; roles</h2>
+                  <button type="button" class="btn btn-ll-outline btn-sm" data-save-toast="Invite sent.">
+                    <i class="bi bi-person-plus" aria-hidden="true"></i>Invite
+                  </button>
+                </div>
+                <div class="table-responsive">
+                  <table class="table ll-table mb-0">
+                    <caption class="visually-hidden">
+                      Team members and roles
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Member</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Priya Raman</th>
+                        <td>Owner</td>
+                        <td><span class="ll-badge is-success">Active</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Meera Sethi</th>
+                        <td>Advisor</td>
+                        <td><span class="ll-badge is-success">Active</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Farhan Ali</th>
+                        <td>Advisor</td>
+                        <td><span class="ll-badge is-success">Active</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">ops@ledgerline.example</th>
+                        <td>Operations</td>
+                        <td><span class="ll-badge is-warning">Invited</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+            <div class="col-xl-5">
+              <section class="ll-panel h-auto" aria-labelledby="int-title">
+                <div class="ll-panel-head"><h2 id="int-title">Integrations</h2></div>
+                <div class="ll-doc-row">
+                  <div class="ll-doc-icon"><i class="bi bi-envelope-paper" aria-hidden="true"></i></div>
+                  <div class="ll-doc-meta">
+                    <strong>Formspree / Netlify Forms</strong><small>Contact & consultation forms</small>
+                  </div>
+                  <span class="ll-badge is-success">Connected</span
+                  ><button
+                    type="button"
+                    class="btn btn-ll-outline btn-sm"
+                    data-save-toast="Formspree / Netlify Forms: settings opened"
+                  >
+                    Configure<span class="visually-hidden"> Formspree / Netlify Forms</span>
+                  </button>
+                </div>
+                <div class="ll-doc-row">
+                  <div class="ll-doc-icon"><i class="bi bi-mailbox" aria-hidden="true"></i></div>
+                  <div class="ll-doc-meta">
+                    <strong>Mailchimp / ConvertKit</strong><small>Newsletter list sync</small>
+                  </div>
+                  <span class="ll-badge is-neutral">Connect</span
+                  ><button
+                    type="button"
+                    class="btn btn-ll-outline btn-sm"
+                    data-save-toast="Mailchimp / ConvertKit: settings opened"
+                  >
+                    Configure<span class="visually-hidden"> Mailchimp / ConvertKit</span>
+                  </button>
+                </div>
+                <div class="ll-doc-row">
+                  <div class="ll-doc-icon"><i class="bi bi-calendar-event" aria-hidden="true"></i></div>
+                  <div class="ll-doc-meta">
+                    <strong>Calendly / Cal.com</strong><small>Client self-booking</small>
+                  </div>
+                  <span class="ll-badge is-success">Connected</span
+                  ><button
+                    type="button"
+                    class="btn btn-ll-outline btn-sm"
+                    data-save-toast="Calendly / Cal.com: settings opened"
+                  >
+                    Configure<span class="visually-hidden"> Calendly / Cal.com</span>
+                  </button>
+                </div>
+                <div class="ll-doc-row">
+                  <div class="ll-doc-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></div>
+                  <div class="ll-doc-meta"><strong>Google Maps</strong><small>Office map embed</small></div>
+                  <span class="ll-badge is-warning">API key needed</span
+                  ><button
+                    type="button"
+                    class="btn btn-ll-outline btn-sm"
+                    data-save-toast="Google Maps: settings opened"
+                  >
+                    Configure<span class="visually-hidden"> Google Maps</span>
+                  </button>
+                </div>
+                <div class="ll-doc-row">
+                  <div class="ll-doc-icon"><i class="bi bi-credit-card" aria-hidden="true"></i></div>
+                  <div class="ll-doc-meta">
+                    <strong>Razorpay / Stripe</strong><small>Plan payments</small>
+                  </div>
+                  <span class="ll-badge is-neutral">Connect</span
+                  ><button
+                    type="button"
+                    class="btn btn-ll-outline btn-sm"
+                    data-save-toast="Razorpay / Stripe: settings opened"
+                  >
+                    Configure<span class="visually-hidden"> Razorpay / Stripe</span>
+                  </button>
+                </div>
+                <p class="small text-muted mt-3 mb-0">
+                  Placeholders. See documentation → Integrations for each provider's snippet.
+                </p>
+              </section>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculator.js" defer></script>
+    <script src="../assets/js/dashboard.js" defer></script>
+  </body>
+</html>

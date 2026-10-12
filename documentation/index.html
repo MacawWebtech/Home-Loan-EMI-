@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Template Documentation | Ledgerline</title>
+    <meta
+      name="description"
+      content="Ledgerline template docs: installation, folder structure, colors, fonts, currency, calculators, dark mode, RTL, integrations, SEO, credits and changelog."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.ledgerline.example/documentation/index.html" />
+    <meta name="theme-color" content="#1c2b45" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ledgerline" />
+    <meta property="og:title" content="Template Documentation | Ledgerline" />
+    <meta
+      property="og:description"
+      content="Ledgerline template docs: installation, folder structure, colors, fonts, currency, calculators, dark mode, RTL, integrations, SEO, credits and changelog."
+    />
+    <meta property="og:url" content="https://www.ledgerline.example/documentation/index.html" />
+    <meta property="og:image" content="https://www.ledgerline.example/assets/images/og-image.webp" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='10'%20fill='%231c2b45'/%3E%3Cpath%20d='M8%2019%20L20%209%20L32%2019'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M12%2018%20V30%20H28%20V18'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'/%3E%3Cpath%20d='M16%2023%20H24'%20stroke='%23e0835a'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+    />
+    <!-- Bootstrap 5.3.3 + Bootstrap Icons 1.11.3 are bundled in assets/vendor (works offline). CDN alternative in documentation. -->
+    <link id="bs-css" rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <script>
+      /* Pre-paint: apply saved theme + direction before first render (prevents flash) */ (function () {
+        try {
+          var d = document.documentElement,
+            t = localStorage.getItem("ll-theme"),
+            r = localStorage.getItem("ll-dir");
+          d.setAttribute(
+            "data-theme",
+            t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
+          );
+          if (r === "rtl") {
+            d.setAttribute("dir", "rtl");
+            var l = document.getElementById("bs-css");
+            l.href = l.href.replace("bootstrap.min.css", "bootstrap.rtl.min.css");
+          }
+        } catch (e) {}
+        document.addEventListener(
+          "error",
+          function (e) {
+            var i = e.target;
+            if (i && i.tagName === "IMG" && i.dataset.fallback && !i.dataset.fell) {
+              i.dataset.fell = "1";
+              i.removeAttribute("srcset");
+              i.src = i.dataset.fallback;
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Ledgerline Home Loan Advisors",
+        "description": "Independent home loan EMI planning, lender comparison and refinancing advice.",
+        "url": "https://www.ledgerline.example/",
+        "logo": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "image": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "telephone": "+91 44 4000 1234",
+        "email": "hello@ledgerline.example",
+        "priceRange": "Free first consultation",
+        "areaServed": "IN",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4th Floor, 23/12, Cathedral Garden Rd, Nungambakkam",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600034",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1280" },
+        "openingHours": "Mo-Sa 09:30-18:30"
+      }
+    </script>
+    <style>
+      .ll-doc-code {
+        background: var(--ll-surface-2);
+        border: 1px solid var(--ll-border);
+        border-radius: 10px;
+        padding: 1rem 1.15rem;
+        font-family: var(--ll-font-mono);
+        font-size: 0.82rem;
+        color: var(--ll-text);
+        overflow-x: auto;
+      }
+      .ll-doc-toc a {
+        display: flex;
+        align-items: center;
+        min-height: 36px;
+        text-decoration: none;
+        color: var(--ll-text);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding-inline: 0.75rem;
+        border-radius: 6px;
+      }
+      .ll-doc-toc a:hover {
+        background: var(--ll-surface-2);
+        color: var(--ll-accent);
+      }
+      .ll-docs main code {
+        color: var(--ll-accent);
+        font-size: 0.86em;
+        overflow-wrap: anywhere;
+      }
+      .ll-docs main pre code {
+        overflow-wrap: normal;
+      }
+      .ll-docs main h3 {
+        font-size: 1.15rem;
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body class="">
+    <a class="ll-skip" href="#main">Skip to main content</a>
+    <header class="ll-header">
+      <nav class="navbar" aria-label="Documentation">
+        <div class="container ll-container">
+          <a class="ll-brand" href="../index.html"
+            ><svg class="ll-brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" width="38" height="38" rx="10" fill="currentColor" opacity=".08" />
+              <path
+                d="M7 19 L20 8 L33 19"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11 18 V31 H29 V18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 23 H25 M15 27 H22"
+                stroke="#a84c25"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              /></svg
+            ><span class="ll-brand-name">Ledgerline<small>Documentation · v1.0.0</small></span></a
+          >
+          <div class="d-flex gap-2 align-items-center">
+            <button
+              type="button"
+              class="btn btn-icon"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark mode"
+            >
+              <i class="bi bi-moon-stars" aria-hidden="true"></i></button
+            ><button
+              type="button"
+              class="btn btn-icon"
+              data-rtl-toggle
+              aria-pressed="false"
+              aria-label="Switch to right-to-left layout"
+            >
+              <i class="bi bi-text-right" aria-hidden="true"></i></button
+            ><a class="btn btn-ll-primary btn-sm" href="../index.html">View template</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container ll-container ll-docs py-5">
+      <div class="row g-5">
+        <aside class="col-lg-3" aria-label="Contents">
+          <div class="position-sticky" style="top: 96px">
+            <p class="ll-eyebrow">Contents</p>
+            <ul class="list-unstyled ll-doc-toc">
+              <li><a href="#intro">Introduction</a></li>
+              <li><a href="#install">Installation</a></li>
+              <li><a href="#structure">Folder &amp; page structure</a></li>
+              <li><a href="#colors">Customizing colors</a></li>
+              <li><a href="#fonts">Customizing fonts</a></li>
+              <li><a href="#currency">Currency &amp; number format</a></li>
+              <li><a href="#content">Editing content</a></li>
+              <li><a href="#calculators">Calculators</a></li>
+              <li><a href="#theme">Dark mode &amp; RTL</a></li>
+              <li><a href="#components">Reusable components</a></li>
+              <li><a href="#forms">Forms &amp; validation</a></li>
+              <li><a href="#integrations">Integrations (placeholders)</a></li>
+              <li><a href="#a11y">Accessibility</a></li>
+              <li><a href="#seo">SEO &amp; performance</a></li>
+              <li><a href="#photos">Photos</a></li>
+              <li><a href="#cdn">Using a CDN instead of the bundled vendor files</a></li>
+              <li><a href="#quality">Quality checks</a></li>
+              <li><a href="#credits">Credits</a></li>
+              <li><a href="#changelog">Changelog</a></li>
+              <li><a href="#support">Support</a></li>
+            </ul>
+          </div>
+        </aside>
+        <main id="main" class="col-lg-9">
+          <h1 class="mb-4">Ledgerline template guide</h1>
+          <section id="intro" class="mb-5 pb-3" aria-labelledby="intro-h">
+            <h2 id="intro-h" class="h3">Introduction</h2>
+            <p class="ll-lead">
+              Ledgerline is a static, multi-page HTML template for a home loan EMI and financial planning
+              consultancy. It uses Bootstrap 5.3.3, one custom stylesheet with design tokens, and three
+              vanilla JavaScript files. There is no build step.
+            </p>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="ll-stat">
+                  <span class="ll-stat-label">HTML pages</span><span class="ll-stat-value">29</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="ll-stat">
+                  <span class="ll-stat-label">Calculators</span><span class="ll-stat-value">5</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="ll-stat">
+                  <span class="ll-stat-label">Dependencies</span
+                  ><span class="ll-stat-value">Bootstrap only</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="install" class="mb-5 pb-3" aria-labelledby="install-h">
+            <h2 id="install-h" class="h3">Installation</h2>
+            <ol>
+              <li>Unzip the package. Keep the folder structure as it is.</li>
+              <li>
+                Open <code>index.html</code> in a browser. Everything works from disk, including the
+                calculators, theme and RTL toggles.
+              </li>
+              <li>For local development, serve the folder so paths behave like production:</li>
+            </ol>
+            <pre class="ll-doc-code"><code>npx serve .
+# or
+python3 -m http.server 8080</code></pre>
+            <ol start="4">
+              <li>
+                To publish, upload the whole folder to any static host (Netlify, Vercel, GitHub Pages,
+                Cloudflare Pages, cPanel).
+              </li>
+              <li>
+                Custom 404: copy <code>pages/404.html</code> to the root as <code>404.html</code> and change
+                <code>../</code> asset paths to <code>./</code>.
+              </li>
+            </ol>
+            <p>
+              <strong>Why classic scripts instead of ES modules?</strong> Browsers block
+              <code>type="module"</code> scripts on <code>file://</code> URLs. The JS is written in modern
+              ES6+ and organised into module objects on one <code>window.LL</code> namespace, so it runs when
+              opened straight from disk. If you add a bundler later, each section converts cleanly to an
+              <code>export</code>.
+            </p>
+          </section>
+          <section id="structure" class="mb-5 pb-3" aria-labelledby="structure-h">
+            <h2 id="structure-h" class="h3">Folder &amp; page structure</h2>
+            <pre class="ll-doc-code"><code>ledgerline/
+├── index.html                    Home 1 (general audience)
+├── pages/
+│   ├── home-2.html               Home 2 (refinancing / salaried)
+│   ├── about.html                Team, mission, history, licences
+│   ├── services.html             Service grid + journey + comparison
+│   ├── service-details.html      Loan comparison service, FAQs, pricing table
+│   ├── emi-calculator.html       EMI + schedule, prepayment, affordability, balance transfer
+│   ├── pricing.html              Plans with monthly / yearly toggle
+│   ├── blog.html                 Filter chips + live search
+│   ├── blog-details.html         Article with sidebar
+│   ├── contact.html              Consultation form, details, map placeholder
+│   ├── 404.html  coming-soon.html
+│   ├── login.html  register.html  forgot-password.html
+│   ├── client-dashboard.html     Overview
+│   ├── client-application.html   Status tracker
+│   ├── client-repayment.html     EMI + repayment schedule
+│   ├── client-documents.html     Checklist + upload
+│   ├── client-bookings.html      Calendar slots
+│   ├── client-messages.html      Inbox
+│   ├── client-profile.html       Profile &amp; settings
+│   ├── admin-dashboard.html      Analytics
+│   ├── admin-leads.html          Leads &amp; users table
+│   ├── admin-pipeline.html       Kanban applications pipeline
+│   ├── admin-calendar.html       Consultation week view
+│   ├── admin-messages.html  admin-reports.html  admin-settings.html
+├── assets/css/   style.css  dark-mode.css  rtl.css
+├── assets/js/    main.js  calculator.js  dashboard.js
+├── assets/images/  (fallback illustrations, WebP)   assets/vendor/  (Bootstrap + Icons)
+├── documentation/index.html
+└── sitemap.xml  robots.txt  README.md</code></pre>
+            <h3>Home page order</h3>
+            <p>
+              Sticky header → hero with live mini calculator → trust strip (count-up) → What we do → Your loan
+              journey → Who is this for → Lender comparison preview → Client portal teaser → Testimonials →
+              FAQ → CTA band → Newsletter → Footer with regulatory disclaimer. Each section has one primary
+              action.
+            </p>
+            <h3>Page anatomy</h3>
+            <p>
+              Every public page uses the same shell: skip link, <code>header.ll-header</code>,
+              <code>main#main</code>, <code>footer.ll-footer</code>. Inner pages start with
+              <code>.ll-page-head</code> (breadcrumb, eyebrow, one H1, lead). Dashboards use
+              <code>.ll-app</code> → <code>aside.ll-sidebar</code> + <code>.ll-topbar</code> +
+              <code>main.ll-app-content</code>.
+            </p>
+          </section>
+          <section id="colors" class="mb-5 pb-3" aria-labelledby="colors-h">
+            <h2 id="colors-h" class="h3">Customizing colors</h2>
+            <p>
+              All colors are CSS custom properties at the top of <code>assets/css/style.css</code>. Components
+              only read tokens, so changing a token updates the whole site.
+            </p>
+            <pre class="ll-doc-code"><code>:root {
+  --ll-primary: #1c2b45;   /* ink-navy: headings, dark bands, footer */
+  --ll-secondary: #5b6b82; /* slate */
+  --ll-accent: #a84c25;    /* copper: primary buttons, highlights */
+  --ll-accent-rgb: 180, 83, 42;  /* keep in sync with --ll-accent */
+  --ll-success: #3f7356;   /* sage: approved, savings */
+  --ll-warning: #9a6a12;
+  --ll-bg: #f7f2e8;        /* paper cream */
+  --ll-surface: #fffdf8;   /* cards */
+  --ll-text: #1d2433;
+}</code></pre>
+            <p>
+              Dark mode values live in <code>assets/css/dark-mode.css</code> under
+              <code>[data-theme="dark"]</code>. Change both files together. Text and button combinations were
+              chosen for WCAG AA contrast; re-check with a contrast tool if you change them.
+            </p>
+          </section>
+          <section id="fonts" class="mb-5 pb-3" aria-labelledby="fonts-h">
+            <h2 id="fonts-h" class="h3">Customizing fonts</h2>
+            <p>
+              The template uses three Google Fonts: <strong>Fraunces</strong> (headlines),
+              <strong>Manrope</strong> (body) and <strong>JetBrains Mono</strong> (all money figures, for
+              aligned tabular digits). To swap them, edit the Google Fonts <code>&lt;link&gt;</code> in each
+              page head, then the tokens:
+            </p>
+            <pre class="ll-doc-code"><code>:root {
+  --ll-font-display: &quot;Fraunces&quot;, Georgia, serif;
+  --ll-font-body: &quot;Manrope&quot;, system-ui, sans-serif;
+  --ll-font-mono: &quot;JetBrains Mono&quot;, ui-monospace, monospace;
+}</code></pre>
+            <p>
+              Any element with <code>.ll-money</code>, <code>.ll-num</code> or <code>[data-money]</code> uses
+              the mono font with tabular numbers.
+            </p>
+          </section>
+          <section id="currency" class="mb-5 pb-3" aria-labelledby="currency-h">
+            <h2 id="currency-h" class="h3">Currency &amp; number format</h2>
+            <p>
+              Change currency once in <code>assets/js/main.js</code>. Every calculator, slider label, count-up
+              and <code>[data-money]</code> element re-renders with it.
+            </p>
+            <pre class="ll-doc-code"><code>const CONFIG = Object.assign({
+  locale: &#x27;en-IN&#x27;,      // &#x27;en-US&#x27;, &#x27;en-GB&#x27;, &#x27;ar-AE&#x27; …
+  currency: &#x27;INR&#x27;,      // &#x27;USD&#x27;, &#x27;GBP&#x27;, &#x27;AED&#x27; …
+  shortUnits: &#x27;indian&#x27;  // &#x27;indian&#x27; → ₹50 L / ₹2.5 Cr ; &#x27;western&#x27; → $50K / $2.5M
+}, window.LL_CONFIG || {});</code></pre>
+            <p>You can also override it per page without editing the file:</p>
+            <pre
+              class="ll-doc-code"
+            ><code>&lt;script&gt;window.LL_CONFIG = { locale: &#x27;en-US&#x27;, currency: &#x27;USD&#x27;, shortUnits: &#x27;western&#x27; };&lt;/script&gt;
+&lt;!-- place before main.js --&gt;</code></pre>
+            <p>
+              Static amounts in HTML are written as
+              <code>&lt;span data-money="5000000"&gt;₹50,00,000&lt;/span&gt;</code>. The text is a no-JS
+              fallback; JS reformats it. Add <code>data-money-short</code> for the compact form. Slider ranges
+              such as the 5 L–5 Cr labels are plain text, so update them by hand if you change markets.
+            </p>
+          </section>
+          <section id="content" class="mb-5 pb-3" aria-labelledby="content-h">
+            <h2 id="content-h" class="h3">Editing content</h2>
+            <ul>
+              <li>
+                <strong>Text:</strong> edit the HTML directly. Section comments like
+                <code>&lt;!-- ===== D. JOURNEY ===== --&gt;</code> mark each block on the home page.
+              </li>
+              <li>
+                <strong>Jargon tooltips:</strong> wrap a term as
+                <code
+                  >&lt;span class="ll-term" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Plain
+                  explanation"&gt;LTV&lt;/span&gt;</code
+                >. They open on hover and keyboard focus.
+              </li>
+              <li>
+                <strong>Lender table:</strong> sample lenders are fictional. Replace names, rates and fees,
+                and keep the disclaimer under the table.
+              </li>
+              <li><strong>Images:</strong> see <a href="#photos">Photos</a> below.</li>
+              <li>
+                <strong>Counters:</strong>
+                <code>&lt;span data-count="500" data-prefix="currency" data-suffix=" Cr+"&gt;</code> counts up
+                when scrolled into view. <code>data-decimals</code> sets precision.
+              </li>
+              <li>
+                <strong>Legal:</strong> search <code>TODO (legal)</code> for licence numbers and regulator
+                wording.
+              </li>
+            </ul>
+          </section>
+          <section id="calculators" class="mb-5 pb-3" aria-labelledby="calculators-h">
+            <h2 id="calculators-h" class="h3">Calculators</h2>
+            <p>
+              All maths is in <code>LL.calc</code> (<code>assets/js/calculator.js</code>) and uses the
+              standard reducing-balance formula:
+            </p>
+            <pre class="ll-doc-code"><code>EMI = P × r × (1 + r)^n / ((1 + r)^n − 1)
+P = principal, r = annual rate / 12 / 100, n = months
+
+LL.calc.emi(5000000, 8.5, 240)            // 43391.16
+LL.calc.principalFromEmi(43391.16, 8.5, 240) // 5000000
+LL.calc.schedule(P, rate, n, { extraMonthly, lumpAmount, lumpMonth })
+LL.calc.yearly(rows)</code></pre>
+            <div class="table-responsive">
+              <table class="table ll-table">
+                <thead>
+                  <tr>
+                    <th>Calculator</th>
+                    <th>Hook</th>
+                    <th>Inputs (<code>data-k</code>)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hero mini</td>
+                    <td><code>[data-mini-calc]</code></td>
+                    <td>amount, rate, tenure (years)</td>
+                  </tr>
+                  <tr>
+                    <td>EMI + schedule</td>
+                    <td><code>[data-calc-form="emi"]</code></td>
+                    <td>amount, rate, tenure</td>
+                  </tr>
+                  <tr>
+                    <td>Prepayment</td>
+                    <td><code>[data-calc-form="prepay"]</code></td>
+                    <td>amount, rate, tenure, extra, lump, lumpYear</td>
+                  </tr>
+                  <tr>
+                    <td>Affordability</td>
+                    <td><code>[data-calc-form="afford"]</code></td>
+                    <td>income, existing, savings, rate, tenure, foir</td>
+                  </tr>
+                  <tr>
+                    <td>Balance transfer</td>
+                    <td><code>[data-calc-form="transfer"]</code></td>
+                    <td>outstanding, remaining, oldRate, newRate, fee</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Outputs are any element with <code>data-out="key"</code>. A range and a number input with the
+              same <code>data-k</code> stay in sync. The hero calculator passes its values to the full
+              calculator via <code>?amount=&amp;rate=&amp;tenure=</code>. Affordability uses RBI LTV bands
+              (90% ≤ ₹30 L, 80% ≤ ₹75 L, 75% above); edit <code>ltvFor()</code> for other markets.
+            </p>
+          </section>
+          <section id="theme" class="mb-5 pb-3" aria-labelledby="theme-h">
+            <h2 id="theme-h" class="h3">Dark mode &amp; RTL</h2>
+            <p>
+              <strong>Dark mode</strong> follows the system setting until the visitor clicks the toggle; the
+              choice is then saved in <code>localStorage</code> (<code>ll-theme</code>). A tiny inline script
+              in each <code>&lt;head&gt;</code> applies it before first paint to avoid a flash.
+            </p>
+            <p>
+              <strong>RTL</strong>: the toggle sets <code>dir="rtl"</code>, swaps
+              <code>bootstrap.min.css</code> for <code>bootstrap.rtl.min.css</code> and saves the choice
+              (<code>ll-dir</code>). Custom CSS uses logical properties (<code>margin-inline-start</code>,
+              <code>inset-inline-end</code>…), so most layout flips by itself; <code>rtl.css</code> handles
+              icons, transforms and keeps money figures and sliders LTR. To ship an Arabic or Hebrew site, set
+              <code>&lt;html lang="ar" dir="rtl"&gt;</code>, point <code>#bs-css</code> at the RTL file, and
+              add a suitable font in <code>rtl.css</code>.
+            </p>
+          </section>
+          <section id="components" class="mb-5 pb-3" aria-labelledby="components-h">
+            <h2 id="components-h" class="h3">Reusable components</h2>
+            <div class="table-responsive">
+              <table class="table ll-table">
+                <thead>
+                  <tr>
+                    <th>Component</th>
+                    <th>Classes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Buttons</td>
+                    <td>
+                      <code>btn btn-ll-primary</code> (copper CTA), <code>btn-ll-ink</code>,
+                      <code>btn-ll-outline</code>, <code>btn-ll-ghost</code>, <code>btn-ll-light</code>,
+                      <code>btn-icon</code>; sizes <code>btn-sm</code>/<code>btn-lg</code>. All ≥ 44px tall.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cards</td>
+                    <td>
+                      <code>ll-card</code>, <code>ll-card-hover</code>, <code>ll-reg</code> (blueprint corner
+                      marks), <code>ll-icon-tile</code> (+ <code>is-accent</code>, <code>is-sage</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Badges / chips</td>
+                    <td>
+                      <code
+                        >ll-badge is-success | is-warning | is-danger | is-info | is-neutral | is-accent</code
+                      >, <code>ll-chip</code> (filter, uses <code>aria-pressed</code>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Form fields</td>
+                    <td>
+                      Bootstrap <code>form-control</code>/<code>form-select</code> restyled; sliders
+                      <code>ll-range</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tables</td>
+                    <td><code>ll-table-wrap</code> + <code>table ll-table</code></td>
+                  </tr>
+                  <tr>
+                    <td>Tooltips</td>
+                    <td><code>ll-term</code> + Bootstrap tooltip attributes</td>
+                  </tr>
+                  <tr>
+                    <td>Modals</td>
+                    <td>Bootstrap modal, themed via tokens</td>
+                  </tr>
+                  <tr>
+                    <td>Motifs</td>
+                    <td>
+                      <code>ll-blueprint</code>, <code>ll-blueprint-fine</code> (grid backgrounds), roof-line
+                      divider, inline house SVG <code>.ll-house-line</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Skeletons</td>
+                    <td>
+                      Wrap a widget in <code>[data-load]</code> with <code>[data-skeleton]</code> +
+                      <code>[data-skeleton-target]</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Reveal</td>
+                    <td>
+                      <code>ll-reveal</code> + optional <code>data-delay="1–4"</code>; disabled for reduced
+                      motion
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section id="forms" class="mb-5 pb-3" aria-labelledby="forms-h">
+            <h2 id="forms-h" class="h3">Forms &amp; validation</h2>
+            <p>
+              Add <code>data-validate</code> to any form. Fields use native constraints
+              (<code>required</code>, <code>type="email"</code>, <code>pattern</code>, <code>minlength</code>)
+              and get friendly inline messages, linked with <code>aria-describedby</code>. Override any
+              message per field:
+            </p>
+            <pre class="ll-doc-code"><code>&lt;input required pattern=&quot;[0-9+ ]{10,15}&quot;
+       data-msg-required=&quot;Please add your number.&quot;
+       data-msg-pattern=&quot;Use a 10-digit mobile number.&quot;&gt;
+&lt;input id=&quot;pw2&quot; data-match=&quot;pw1&quot; data-msg-match=&quot;Passwords don&#x27;t match yet.&quot;&gt;</code></pre>
+            <p>
+              Other form attributes: <code>data-toast</code> (success message), <code>data-redirect</code> (go
+              to a page on success), <code>data-success</code> (id of an element to reveal).
+            </p>
+          </section>
+          <section id="integrations" class="mb-5 pb-3" aria-labelledby="integrations-h">
+            <h2 id="integrations-h" class="h3">Integrations (placeholders)</h2>
+            <p>
+              Search <code>TODO (integration)</code>. Each spot has a comment with the snippet. Remove the
+              demo submit handler in <code>main.js</code> (section 8) once a real endpoint is set.
+            </p>
+            <div class="table-responsive">
+              <table class="table ll-table">
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Where</th>
+                    <th>What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Formspree</td>
+                    <td>Contact, service details</td>
+                    <td><code>action="https://formspree.io/f/ID" method="POST"</code></td>
+                  </tr>
+                  <tr>
+                    <td>Netlify Forms</td>
+                    <td>Any form</td>
+                    <td>Add <code>data-netlify="true" name="contact"</code></td>
+                  </tr>
+                  <tr>
+                    <td>Mailchimp / ConvertKit</td>
+                    <td>Newsletter band</td>
+                    <td>Paste the list's form action URL</td>
+                  </tr>
+                  <tr>
+                    <td>Google Maps</td>
+                    <td>Contact page</td>
+                    <td>Replace the map image with the embed iframe in the comment</td>
+                  </tr>
+                  <tr>
+                    <td>Calendly / Cal.com</td>
+                    <td>Client bookings</td>
+                    <td>Replace the slot picker with the inline widget</td>
+                  </tr>
+                  <tr>
+                    <td>Razorpay / Stripe</td>
+                    <td>Pricing cards</td>
+                    <td>Payment Button script or Payment Link on each plan button</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section id="a11y" class="mb-5 pb-3" aria-labelledby="a11y-h">
+            <h2 id="a11y-h" class="h3">Accessibility</h2>
+            <ul>
+              <li>Skip link, one H1 per page, landmark regions and labelled sections.</li>
+              <li>Visible 3px copper focus ring on every interactive element.</li>
+              <li>
+                Sliders are native <code>input type="range"</code> (arrow keys, Page Up/Down) with live
+                <code>aria-valuetext</code> such as "₹50 L".
+              </li>
+              <li>
+                Accordions, tabs, dropdowns and modals use Bootstrap's keyboard support. Kanban cards move
+                with ← / → and announce the move.
+              </li>
+              <li>Calculator results are in <code>aria-live="polite"</code> regions.</li>
+              <li><code>prefers-reduced-motion</code> turns off reveal, count-up and transitions.</li>
+              <li>Touch targets are at least 44 × 44px.</li>
+            </ul>
+          </section>
+          <section id="seo" class="mb-5 pb-3" aria-labelledby="seo-h">
+            <h2 id="seo-h" class="h3">SEO &amp; performance</h2>
+            <ul>
+              <li>
+                Unique <code>&lt;title&gt;</code> (&lt; 60 chars) and meta description (150–160 chars) on
+                every page; canonical, Open Graph and Twitter tags.
+              </li>
+              <li>
+                <code>FinancialService</code> JSON-LD on every page, plus <code>Article</code> on the blog
+                post.
+              </li>
+              <li>
+                <code>sitemap.xml</code> lists public pages; <code>robots.txt</code> blocks dashboards and
+                auth pages, which also carry <code>noindex</code>.
+              </li>
+              <li>
+                Images are WebP with explicit width/height (no layout shift),
+                <code>loading="lazy"</code> below the fold and <code>fetchpriority="high"</code> on hero
+                images.
+              </li>
+              <li>
+                Scripts load with <code>defer</code>. Fonts use <code>display=swap</code> with preconnect.
+              </li>
+              <li>
+                Replace <code>https://www.ledgerline.example</code> everywhere with your domain before launch.
+              </li>
+              <li>
+                To push PageSpeed further: self-host fonts as WOFF2, and purge unused Bootstrap CSS with
+                PurgeCSS.
+              </li>
+            </ul>
+          </section>
+          <section id="photos" class="mb-5 pb-3" aria-labelledby="photos-h">
+            <h2 id="photos-h" class="h3">Photos</h2>
+            <p>
+              All photographs are local files in <code>assets/images/</code>, so the pages make no third-party
+              image requests. To replace one, overwrite the file (keeping the same name) or change the
+              <code>src</code> in the HTML, and update the <code>alt</code> text. Keep the
+              <code>width</code>/<code>height</code> attributes in step with the new image to prevent layout
+              shift.
+            </p>
+            <h3>Banner backgrounds</h3>
+            <p>
+              The home hero, Home 2 hero, every inner-page banner, the article header, the login/register side
+              panel and the CTA band have a full-bleed background photo. Markup: a
+              <code>.ll-banner</code> section containing
+              <code>&lt;div class="ll-banner-media"&gt;&lt;img alt=""&gt;&lt;/div&gt;</code> (decorative, so
+              empty alt). The overlay is drawn in CSS by <code>.ll-banner::before</code>: an ink-navy gradient
+              (strong behind the text, lighter on the far side, flipped in RTL, uniform on phones). No grid
+              lines or line drawings are drawn over photos. Banners stay dark in both themes so text contrast
+              never depends on the photo. Tune the strength via <code>--ll-banner-overlay</code> in
+              <code>style.css</code> section 34. If a photo can't load, the ink gradient shows on its own.
+            </p>
+            <div class="table-responsive">
+              <table class="table ll-table">
+                <thead>
+                  <tr>
+                    <th>Banner</th>
+                    <th>Photographer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>home</td>
+                    <td>Tobias Wilden</td>
+                  </tr>
+                  <tr>
+                    <td>home2</td>
+                    <td>vikram</td>
+                  </tr>
+                  <tr>
+                    <td>About us</td>
+                    <td>Hardik Joshi</td>
+                  </tr>
+                  <tr>
+                    <td>Services</td>
+                    <td>Arthur BAUDRY</td>
+                  </tr>
+                  <tr>
+                    <td>Pricing</td>
+                    <td>Scott Graham</td>
+                  </tr>
+                  <tr>
+                    <td>Service · Loan comparison</td>
+                    <td>Amina Atar</td>
+                  </tr>
+                  <tr>
+                    <td>Calculators</td>
+                    <td>Towfiqu barbhuiya</td>
+                  </tr>
+                  <tr>
+                    <td>The Rate Ledger</td>
+                    <td>Romain Dancre</td>
+                  </tr>
+                  <tr>
+                    <td>Contact</td>
+                    <td>Yibei Geng</td>
+                  </tr>
+                  <tr>
+                    <td>article</td>
+                    <td>the Bialons</td>
+                  </tr>
+                  <tr>
+                    <td>auth</td>
+                    <td>John Fornander</td>
+                  </tr>
+                  <tr>
+                    <td>cta</td>
+                    <td>Stacie Ong</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The contact-page map and the social sharing image (<code>og-image.webp</code>) stay as
+              illustrations: the map is a placeholder for a Google Maps embed, and the share card carries the
+              brand name.
+            </p>
+          </section>
+          <section id="cdn" class="mb-5 pb-3" aria-labelledby="cdn-h">
+            <h2 id="cdn-h" class="h3">Using a CDN instead of the bundled vendor files</h2>
+            <pre
+              class="ll-doc-code"
+            ><code>&lt;link id=&quot;bs-css&quot; rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js&quot; defer&gt;&lt;/script&gt;</code></pre>
+            <p>
+              The RTL toggle swaps the file name in the <code>#bs-css</code> href, so it works with CDN URLs
+              too.
+            </p>
+          </section>
+          <section id="quality" class="mb-5 pb-3" aria-labelledby="quality-h">
+            <h2 id="quality-h" class="h3">Quality checks</h2>
+            <ul>
+              <li>
+                HTML checked with the W3C Nu HTML Checker: no markup errors. (Older checker builds flag
+                <code>fetchpriority</code> and logical CSS properties in inline styles; both are valid in
+                current standards.)
+              </li>
+              <li>
+                Internal links and in-page anchors verified; every image has <code>alt</code>; every label
+                points to a field.
+              </li>
+              <li>
+                EMI verified: ₹50,00,000 at 8.5% for 240 months = ₹43,391.16; ₹10,00,000 at 10% for 120 months
+                = ₹13,215.07.
+              </li>
+              <li>No horizontal scrolling at 360, 390 and 768px widths.</li>
+              <li>Tested in Chromium. Before launch, also check Safari and Firefox on real devices.</li>
+            </ul>
+          </section>
+          <section id="credits" class="mb-5 pb-3" aria-labelledby="credits-h">
+            <h2 id="credits-h" class="h3">Credits</h2>
+            <ul>
+              <li>
+                <a href="https://getbootstrap.com/">Bootstrap 5.3.3</a> and
+                <a href="https://icons.getbootstrap.com/">Bootstrap Icons 1.11.3</a> (MIT)
+              </li>
+              <li>
+                <a href="https://fonts.google.com/specimen/Fraunces">Fraunces</a>,
+                <a href="https://fonts.google.com/specimen/Manrope">Manrope</a>,
+                <a href="https://fonts.google.com/specimen/JetBrains+Mono">JetBrains Mono</a> (SIL Open Font
+                Licence)
+              </li>
+              <li>Photography: supplied by the site owner and stored in <code>assets/images/</code>.</li>
+              <li>All people, lenders, figures and testimonials are fictional sample content.</li>
+            </ul>
+          </section>
+          <section id="changelog" class="mb-5 pb-3" aria-labelledby="changelog-h">
+            <h2 id="changelog-h" class="h3">Changelog</h2>
+            <h3 class="h6 ll-num">v1.0.0 · 9 Oct 2026</h3>
+            <ul>
+              <li>Initial release: 15 public pages, 7 client and 7 admin dashboard pages.</li>
+              <li>Locally hosted photography throughout.</li>
+              <li>
+                EMI, prepayment, affordability and balance-transfer calculators with amortization chart,
+                year/month table and CSV export.
+              </li>
+              <li>
+                Light/dark mode, RTL, skeleton loaders, form validation, kanban pipeline, booking calendar,
+                messages.
+              </li>
+            </ul>
+          </section>
+          <section id="support" class="mb-5 pb-3" aria-labelledby="support-h">
+            <h2 id="support-h" class="h3">Support</h2>
+            <p>
+              Before asking for help, search the code for <code>TODO</code> — most questions are answered by a
+              comment at that spot.
+            </p>
+            <ul>
+              <li>Include the page name, browser and a screenshot.</li>
+              <li>Say whether you opened the file directly or through a local server.</li>
+              <li>TODO (customize): add your support email or marketplace support link here.</li>
+            </ul>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+  </body>
+</html>

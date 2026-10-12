@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Client Dashboard | Ledgerline</title>
+    <meta
+      name="description"
+      content="Your home loan at a glance: application stage, estimated EMI, documents pending and your next consultation with your Ledgerline advisor. Demo data only."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.ledgerline.example/pages/client-dashboard.html" />
+    <meta name="theme-color" content="#1c2b45" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ledgerline" />
+    <meta property="og:title" content="Client Dashboard | Ledgerline" />
+    <meta
+      property="og:description"
+      content="Your home loan at a glance: application stage, estimated EMI, documents pending and your next consultation with your Ledgerline advisor. Demo data only."
+    />
+    <meta property="og:url" content="https://www.ledgerline.example/pages/client-dashboard.html" />
+    <meta property="og:image" content="https://www.ledgerline.example/assets/images/og-image.webp" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='10'%20fill='%231c2b45'/%3E%3Cpath%20d='M8%2019%20L20%209%20L32%2019'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M12%2018%20V30%20H28%20V18'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'/%3E%3Cpath%20d='M16%2023%20H24'%20stroke='%23e0835a'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+    />
+    <!-- Bootstrap 5.3.3 + Bootstrap Icons 1.11.3 are bundled in assets/vendor (works offline). CDN alternative in documentation. -->
+    <link id="bs-css" rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <script>
+      /* Pre-paint: apply saved theme + direction before first render (prevents flash) */ (function () {
+        try {
+          var d = document.documentElement,
+            t = localStorage.getItem("ll-theme"),
+            r = localStorage.getItem("ll-dir");
+          d.setAttribute(
+            "data-theme",
+            t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
+          );
+          if (r === "rtl") {
+            d.setAttribute("dir", "rtl");
+            var l = document.getElementById("bs-css");
+            l.href = l.href.replace("bootstrap.min.css", "bootstrap.rtl.min.css");
+          }
+        } catch (e) {}
+        document.addEventListener(
+          "error",
+          function (e) {
+            var i = e.target;
+            if (i && i.tagName === "IMG" && i.dataset.fallback && !i.dataset.fell) {
+              i.dataset.fell = "1";
+              i.removeAttribute("srcset");
+              i.src = i.dataset.fallback;
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Ledgerline Home Loan Advisors",
+        "description": "Independent home loan EMI planning, lender comparison and refinancing advice.",
+        "url": "https://www.ledgerline.example/",
+        "logo": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "image": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "telephone": "+91 44 4000 1234",
+        "email": "hello@ledgerline.example",
+        "priceRange": "Free first consultation",
+        "areaServed": "IN",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4th Floor, 23/12, Cathedral Garden Rd, Nungambakkam",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600034",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1280" },
+        "openingHours": "Mo-Sa 09:30-18:30"
+      }
+    </script>
+  </head>
+  <body class="ll-dash">
+    <a class="ll-skip" href="#main">Skip to main content</a>
+    <div class="ll-app">
+      <aside class="ll-sidebar" id="ll-sidebar" aria-label="Client navigation">
+        <div class="ll-sidebar-head">
+          <a class="ll-brand" href="../index.html" aria-label="Ledgerline home"
+            ><svg class="ll-brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" width="38" height="38" rx="10" fill="currentColor" opacity=".08" />
+              <path
+                d="M7 19 L20 8 L33 19"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11 18 V31 H29 V18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 23 H25 M15 27 H22"
+                stroke="#a84c25"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              /></svg><span class="ll-brand-name">Ledgerline<small>Client portal</small></span></a
+          ><button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Close menu"
+          >
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav aria-label="Dashboard">
+          <div class="ll-side-label">My loan</div>
+          <ul class="ll-side-nav pt-0">
+            <li>
+              <a href="client-dashboard.html" class="active" aria-current="page"
+                ><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Overview</span></a
+              >
+            </li>
+            <li>
+              <a href="client-application.html"
+                ><i class="bi bi-signpost-split" aria-hidden="true"></i><span>Application status</span></a
+              >
+            </li>
+            <li>
+              <a href="client-repayment.html"
+                ><i class="bi bi-calculator" aria-hidden="true"></i><span>EMI &amp; repayment</span></a
+              >
+            </li>
+            <li>
+              <a href="client-documents.html"
+                ><i class="bi bi-folder2-open" aria-hidden="true"></i><span>Documents</span
+                ><span class="ll-badge is-warning">2</span></a
+              >
+            </li>
+            <li>
+              <a href="client-bookings.html"
+                ><i class="bi bi-calendar2-week" aria-hidden="true"></i><span>Consultations</span></a
+              >
+            </li>
+            <li>
+              <a href="client-messages.html"
+                ><i class="bi bi-chat-left-text" aria-hidden="true"></i><span>Messages</span
+                ><span class="ll-badge is-accent">3</span></a
+              >
+            </li>
+            <li>
+              <a href="client-profile.html"
+                ><i class="bi bi-person-gear" aria-hidden="true"></i><span>Profile &amp; settings</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="ll-side-foot">
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start" href="admin-dashboard.html"
+            ><i class="bi bi-shield-lock" aria-hidden="true"></i>Admin demo</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="../index.html"
+            ><i class="bi bi-house" aria-hidden="true"></i>Back to website</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="login.html"
+            ><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a
+          >
+        </div>
+      </aside>
+      <div class="ll-side-backdrop" aria-hidden="true"></div>
+      <div class="ll-app-main">
+        <header class="ll-topbar">
+          <button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+          <form class="ll-topbar-search d-none d-md-block" role="search" action="#">
+            <i class="bi bi-search" aria-hidden="true"></i
+            ><label class="visually-hidden" for="top-q">Search</label
+            ><input class="form-control" id="top-q" type="search" placeholder="Search documents, messages…" />
+          </form>
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <button
+              type="button"
+              class="btn btn-icon"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark mode"
+            >
+              <i class="bi bi-moon-stars" aria-hidden="true"></i></button
+            ><button
+              type="button"
+              class="btn btn-icon"
+              data-rtl-toggle
+              aria-pressed="false"
+              aria-label="Switch to right-to-left layout"
+            >
+              <i class="bi bi-text-right" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-icon position-relative"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Notifications, 3 unread"
+              >
+                <i class="bi bi-bell" aria-hidden="true"></i
+                ><span
+                  class="position-absolute top-0 start-100 translate-middle p-1 rounded-circle"
+                  style="background: var(--ll-accent)"
+                  ><span class="visually-hidden">unread</span></span
+                >
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow" style="min-inline-size: 300px">
+                <li><h2 class="dropdown-header">Notifications</h2></li>
+                <li>
+                  <a class="dropdown-item py-2" href="client-application.html"
+                    ><strong class="d-block small">Credit review started</strong
+                    ><small class="text-muted">Northbank HF · 2 hours ago</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="client-documents.html"
+                    ><strong class="d-block small">Bank statement needs a re-upload</strong
+                    ><small class="text-muted">Yesterday</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="client-bookings.html"
+                    ><strong class="d-block small">Consultation confirmed</strong
+                    ><small class="text-muted">Thu, 11:30</small></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-ll-ghost d-flex align-items-center gap-2 px-2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="ll-avatar-initials" aria-hidden="true">AK</span
+                ><span class="d-none d-lg-inline text-start lh-sm"
+                  ><strong class="d-block small">Ananya Krishnan</strong
+                  ><small class="text-muted">Client · LL-24-0817</small></span
+                ><i class="bi bi-chevron-down small" aria-hidden="true"></i
+                ><span class="visually-hidden">Account menu</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li><a class="dropdown-item" href="client-profile.html">Profile &amp; settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main id="main" class="ll-app-content">
+          <div class="ll-app-title">
+            <div>
+              <h1>Good afternoon, Ananya</h1>
+              <p>Your loan is in credit review. Two documents need your attention.</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-ll-outline" href="client-documents.html"
+                ><i class="bi bi-upload" aria-hidden="true"></i>Upload</a
+              ><a class="btn btn-ll-primary" href="client-bookings.html"
+                ><i class="bi bi-calendar-plus" aria-hidden="true"></i>Book a call</a
+              >
+            </div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-sm-6 col-xl-3">
+              <section class="ll-panel" data-load aria-label="Loan requested">
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div class="ll-kpi" data-skeleton-target>
+                  <div class="ll-kpi-top">
+                    <span class="ll-kpi-label">Loan requested</span
+                    ><span class="ll-icon-tile"><i class="bi bi-house" aria-hidden="true"></i></span>
+                  </div>
+                  <span class="ll-kpi-val"><span data-money="6200000">₹62,00,000</span></span
+                  ><span class="ll-kpi-delta is-up">Eligible up to ₹68 L</span>
+                </div>
+              </section>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <section class="ll-panel" data-load aria-label="Estimated EMI">
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div class="ll-kpi" data-skeleton-target>
+                  <div class="ll-kpi-top">
+                    <span class="ll-kpi-label">Estimated EMI</span
+                    ><span class="ll-icon-tile is-accent"
+                      ><i class="bi bi-calendar-check" aria-hidden="true"></i
+                    ></span>
+                  </div>
+                  <span class="ll-kpi-val"><span data-money="53218">₹53,218</span></span
+                  ><span class="ll-kpi-delta is-up">at 8.35% for 20 yrs</span>
+                </div>
+              </section>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <section class="ll-panel" data-load aria-label="Application stage">
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div class="ll-kpi" data-skeleton-target>
+                  <div class="ll-kpi-top">
+                    <span class="ll-kpi-label">Application stage</span
+                    ><span class="ll-icon-tile is-sage"
+                      ><i class="bi bi-signpost-split" aria-hidden="true"></i
+                    ></span>
+                  </div>
+                  <span class="ll-kpi-val">4 <small class="fs-6 text-muted">of 6</small></span
+                  ><span class="ll-kpi-delta is-up">Credit review</span>
+                </div>
+              </section>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <section class="ll-panel" data-load aria-label="Documents pending">
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div class="ll-kpi" data-skeleton-target>
+                  <div class="ll-kpi-top">
+                    <span class="ll-kpi-label">Documents pending</span
+                    ><span class="ll-icon-tile"><i class="bi bi-folder2-open" aria-hidden="true"></i></span>
+                  </div>
+                  <span class="ll-kpi-val">2</span><span class="ll-kpi-delta is-down">1 needs re-upload</span>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-xl-7">
+              <section class="ll-panel" data-load aria-label="Application progress">
+                <div class="ll-panel-head">
+                  <h2>Application progress</h2>
+                  <span class="ll-badge is-warning">Credit review</span>
+                </div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-40"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                </div>
+                <div data-skeleton-target>
+                  <ol class="ll-stages">
+                    <li class="is-done">
+                      <span class="ll-stage-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span>
+                      <div>
+                        <h3>Eligibility checked</h3>
+                        <p>Soft CIBIL pull: 782. Eligible up to ₹68 L.</p>
+                      </div>
+                      <span class="ll-when">18 Sep</span>
+                    </li>
+                    <li class="is-done">
+                      <span class="ll-stage-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span>
+                      <div>
+                        <h3>Lender selected</h3>
+                        <p>Northbank Home Finance at 8.35% floating.</p>
+                      </div>
+                      <span class="ll-when">22 Sep</span>
+                    </li>
+                    <li class="is-done">
+                      <span class="ll-stage-dot"><i class="bi bi-check-lg" aria-hidden="true"></i></span>
+                      <div>
+                        <h3>Application logged</h3>
+                        <p>File number NBHF/CHN/24/55821.</p>
+                      </div>
+                      <span class="ll-when">26 Sep</span>
+                    </li>
+                    <li class="is-current">
+                      <span class="ll-stage-dot"
+                        ><i class="bi bi-hourglass-split" aria-hidden="true"></i
+                      ></span>
+                      <div>
+                        <h3>Credit review <span class="visually-hidden">(current step)</span></h3>
+                        <p>Underwriter reviewing income and bank statements.</p>
+                      </div>
+                      <span class="ll-when">In progress</span>
+                    </li>
+                    <li class="">
+                      <span class="ll-stage-dot"
+                        ><i class="bi bi-file-earmark-check" aria-hidden="true"></i
+                      ></span>
+                      <div>
+                        <h3>Sanction letter</h3>
+                        <p>Final rate, amount and conditions issued.</p>
+                      </div>
+                      <span class="ll-when">Est. 13 Oct</span>
+                    </li>
+                  </ol>
+                  <a class="ll-link-arrow" href="client-application.html"
+                    >Full tracker <i class="bi bi-arrow-right" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </section>
+            </div>
+            <div class="col-xl-5 d-flex flex-column gap-3">
+              <section class="ll-panel h-auto" data-load aria-label="Next consultation">
+                <div class="ll-panel-head"><h2>Next consultation</h2></div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-40"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div data-skeleton-target>
+                  <div class="d-flex gap-3 align-items-center">
+                    <div class="ll-icon-tile is-accent mb-0">
+                      <i class="bi bi-camera-video" aria-hidden="true"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <strong class="d-block">Sanction letter walkthrough</strong
+                      ><small class="text-muted">Thu, 15 Oct · 11:30 IST · with Priya Raman</small>
+                    </div>
+                  </div>
+                  <div class="d-flex gap-2 mt-3">
+                    <a class="btn btn-ll-primary btn-sm" href="client-bookings.html">Reschedule</a
+                    ><a class="btn btn-ll-outline btn-sm" href="https://meet.google.com/">Join link</a>
+                  </div>
+                </div>
+              </section>
+              <section class="ll-panel h-auto" data-load aria-label="Your to-dos">
+                <div class="ll-panel-head"><h2>Your to-dos</h2></div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-40"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div data-skeleton-target>
+                  <ul class="ll-check-list">
+                    <li>
+                      <span
+                        ><i class="bi bi-x-circle me-2" style="color: var(--ll-danger)" aria-hidden="true"></i
+                        >Re-upload bank statement</span
+                      ><a class="small" href="client-documents.html">Fix</a>
+                    </li>
+                    <li>
+                      <span><i class="bi bi-circle me-2" aria-hidden="true"></i>Upload sale agreement</span
+                      ><a class="small" href="client-documents.html">Upload</a>
+                    </li>
+                    <li>
+                      <span
+                        ><i class="bi bi-check-circle-fill me-2" aria-hidden="true"></i>Review lender
+                        comparison</span
+                      ><span class="ll-badge is-success">Done</span>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-6">
+              <section class="ll-panel" data-load aria-label="Recent messages">
+                <div class="ll-panel-head"><h2>Recent messages</h2></div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-40"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div data-skeleton-target>
+                  <ul class="list-unstyled mb-0">
+                    <li class="ll-doc-row">
+                      <span class="ll-avatar-initials" aria-hidden="true">PR</span>
+                      <div class="ll-doc-meta">
+                        <strong>Priya Raman</strong
+                        ><small>Good news: the underwriter has no queries on your salary slips.</small>
+                      </div>
+                      <small class="text-muted ll-num">2h</small>
+                    </li>
+                    <li class="ll-doc-row">
+                      <span class="ll-avatar-initials" aria-hidden="true">NB</span>
+                      <div class="ll-doc-meta">
+                        <strong>Northbank credit desk</strong
+                        ><small>Could you share the latest bank statement page 3?</small>
+                      </div>
+                      <small class="text-muted ll-num">1d</small>
+                    </li>
+                  </ul>
+                  <a class="ll-link-arrow" href="client-messages.html"
+                    >Open messages <i class="bi bi-arrow-right" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </section>
+            </div>
+            <div class="col-lg-6">
+              <section class="ll-panel" data-load aria-label="Loan summary">
+                <div class="ll-panel-head"><h2>Loan summary</h2></div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-40"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div data-skeleton-target>
+                  <dl class="row mb-0 small">
+                    <dt class="col-6 text-muted fw-semibold">Lender</dt>
+                    <dd class="col-6 text-end">Northbank HF</dd>
+                    <dt class="col-6 text-muted fw-semibold">Rate</dt>
+                    <dd class="col-6 text-end ll-num">8.35% floating</dd>
+                    <dt class="col-6 text-muted fw-semibold">Tenure</dt>
+                    <dd class="col-6 text-end ll-num">20 years</dd>
+                    <dt class="col-6 text-muted fw-semibold">Property</dt>
+                    <dd class="col-6 text-end">2BHK, Perungudi</dd>
+                    <dt class="col-6 text-muted fw-semibold">LTV</dt>
+                    <dd class="col-6 text-end ll-num">80%</dd>
+                    <dt class="col-6 text-muted fw-semibold">Advisor</dt>
+                    <dd class="col-6 text-end mb-0">Priya Raman</dd>
+                  </dl>
+                </div>
+              </section>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculator.js" defer></script>
+    <script src="../assets/js/dashboard.js" defer></script>
+  </body>
+</html>

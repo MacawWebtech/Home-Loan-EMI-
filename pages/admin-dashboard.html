@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Analytics | Ledgerline</title>
+    <meta
+      name="description"
+      content="Advisory team analytics: leads, applications logged, sanctioned value, conversion funnel, monthly disbursals and top lenders this quarter. Sample data."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.ledgerline.example/pages/admin-dashboard.html" />
+    <meta name="theme-color" content="#1c2b45" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ledgerline" />
+    <meta property="og:title" content="Admin Analytics | Ledgerline" />
+    <meta
+      property="og:description"
+      content="Advisory team analytics: leads, applications logged, sanctioned value, conversion funnel, monthly disbursals and top lenders this quarter. Sample data."
+    />
+    <meta property="og:url" content="https://www.ledgerline.example/pages/admin-dashboard.html" />
+    <meta property="og:image" content="https://www.ledgerline.example/assets/images/og-image.webp" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='10'%20fill='%231c2b45'/%3E%3Cpath%20d='M8%2019%20L20%209%20L32%2019'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M12%2018%20V30%20H28%20V18'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'/%3E%3Cpath%20d='M16%2023%20H24'%20stroke='%23e0835a'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+    />
+    <!-- Bootstrap 5.3.3 + Bootstrap Icons 1.11.3 are bundled in assets/vendor (works offline). CDN alternative in documentation. -->
+    <link id="bs-css" rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <script>
+      /* Pre-paint: apply saved theme + direction before first render (prevents flash) */ (function () {
+        try {
+          var d = document.documentElement,
+            t = localStorage.getItem("ll-theme"),
+            r = localStorage.getItem("ll-dir");
+          d.setAttribute(
+            "data-theme",
+            t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
+          );
+          if (r === "rtl") {
+            d.setAttribute("dir", "rtl");
+            var l = document.getElementById("bs-css");
+            l.href = l.href.replace("bootstrap.min.css", "bootstrap.rtl.min.css");
+          }
+        } catch (e) {}
+        document.addEventListener(
+          "error",
+          function (e) {
+            var i = e.target;
+            if (i && i.tagName === "IMG" && i.dataset.fallback && !i.dataset.fell) {
+              i.dataset.fell = "1";
+              i.removeAttribute("srcset");
+              i.src = i.dataset.fallback;
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Ledgerline Home Loan Advisors",
+        "description": "Independent home loan EMI planning, lender comparison and refinancing advice.",
+        "url": "https://www.ledgerline.example/",
+        "logo": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "image": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "telephone": "+91 44 4000 1234",
+        "email": "hello@ledgerline.example",
+        "priceRange": "Free first consultation",
+        "areaServed": "IN",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4th Floor, 23/12, Cathedral Garden Rd, Nungambakkam",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600034",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1280" },
+        "openingHours": "Mo-Sa 09:30-18:30"
+      }
+    </script>
+  </head>
+  <body class="ll-dash">
+    <a class="ll-skip" href="#main">Skip to main content</a>
+    <div class="ll-app">
+      <aside class="ll-sidebar" id="ll-sidebar" aria-label="Admin navigation">
+        <div class="ll-sidebar-head">
+          <a class="ll-brand" href="../index.html" aria-label="Ledgerline home"
+            ><svg class="ll-brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" width="38" height="38" rx="10" fill="currentColor" opacity=".08" />
+              <path
+                d="M7 19 L20 8 L33 19"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11 18 V31 H29 V18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 23 H25 M15 27 H22"
+                stroke="#a84c25"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              /></svg><span class="ll-brand-name">Ledgerline<small>Admin console</small></span></a
+          ><button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Close menu"
+          >
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav aria-label="Dashboard">
+          <div class="ll-side-label">Workspace</div>
+          <ul class="ll-side-nav pt-0">
+            <li>
+              <a href="admin-dashboard.html" class="active" aria-current="page"
+                ><i class="bi bi-graph-up" aria-hidden="true"></i><span>Analytics</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-leads.html"
+                ><i class="bi bi-people" aria-hidden="true"></i><span>Leads &amp; users</span
+                ><span class="ll-badge is-accent">12</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-pipeline.html"
+                ><i class="bi bi-kanban" aria-hidden="true"></i><span>Applications</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-calendar.html"
+                ><i class="bi bi-calendar3" aria-hidden="true"></i><span>Consultations</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-messages.html"
+                ><i class="bi bi-chat-square-dots" aria-hidden="true"></i><span>Messages</span
+                ><span class="ll-badge is-accent">5</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-reports.html"
+                ><i class="bi bi-file-earmark-bar-graph" aria-hidden="true"></i><span>Reports</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-settings.html"
+                ><i class="bi bi-sliders" aria-hidden="true"></i><span>Settings</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="ll-side-foot">
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start" href="client-dashboard.html"
+            ><i class="bi bi-person" aria-hidden="true"></i>View client portal</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="../index.html"
+            ><i class="bi bi-house" aria-hidden="true"></i>Back to website</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="login.html"
+            ><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a
+          >
+        </div>
+      </aside>
+      <div class="ll-side-backdrop" aria-hidden="true"></div>
+      <div class="ll-app-main">
+        <header class="ll-topbar">
+          <button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+          <form class="ll-topbar-search d-none d-md-block" role="search" action="#">
+            <i class="bi bi-search" aria-hidden="true"></i
+            ><label class="visually-hidden" for="top-q">Search</label
+            ><input class="form-control" id="top-q" type="search" placeholder="Search leads, applications…" />
+          </form>
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <button
+              type="button"
+              class="btn btn-icon"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark mode"
+            >
+              <i class="bi bi-moon-stars" aria-hidden="true"></i></button
+            ><button
+              type="button"
+              class="btn btn-icon"
+              data-rtl-toggle
+              aria-pressed="false"
+              aria-label="Switch to right-to-left layout"
+            >
+              <i class="bi bi-text-right" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-icon position-relative"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Notifications, 3 unread"
+              >
+                <i class="bi bi-bell" aria-hidden="true"></i
+                ><span
+                  class="position-absolute top-0 start-100 translate-middle p-1 rounded-circle"
+                  style="background: var(--ll-accent)"
+                  ><span class="visually-hidden">unread</span></span
+                >
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow" style="min-inline-size: 300px">
+                <li><h2 class="dropdown-header">Notifications</h2></li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-pipeline.html"
+                    ><strong class="d-block small">Credit review started</strong
+                    ><small class="text-muted">Northbank HF · 2 hours ago</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-leads.html"
+                    ><strong class="d-block small">New lead from website</strong
+                    ><small class="text-muted">Yesterday</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-calendar.html"
+                    ><strong class="d-block small">Consultation confirmed</strong
+                    ><small class="text-muted">Thu, 11:30</small></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-ll-ghost d-flex align-items-center gap-2 px-2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="ll-avatar-initials" aria-hidden="true">PR</span
+                ><span class="d-none d-lg-inline text-start lh-sm"
+                  ><strong class="d-block small">Priya Raman</strong
+                  ><small class="text-muted">Principal advisor</small></span
+                ><i class="bi bi-chevron-down small" aria-hidden="true"></i
+                ><span class="visually-hidden">Account menu</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li><a class="dropdown-item" href="admin-settings.html">Profile &amp; settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main id="main" class="ll-app-content">
+          <div class="ll-app-title">
+            <div>
+              <h1>Analytics</h1>
+              <p>October 2026 · all advisors</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-ll-outline" href="admin-reports.html"
+                ><i class="bi bi-download" aria-hidden="true"></i>Export</a
+              ><a class="btn btn-ll-primary" href="admin-leads.html"
+                ><i class="bi bi-plus-lg" aria-hidden="true"></i>New lead</a
+              >
+            </div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-sm-6 col-xl-3">
+              <section class="ll-panel" data-load aria-label="Leads this month">
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div class="ll-kpi" data-skeleton-target>
+                  <div class="ll-kpi-top">
+                    <span class="ll-kpi-label">Leads this month</span
+                    ><span class="ll-icon-tile"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
+                  </div>
+                  <span class="ll-kpi-val"><span data-count="186">186</span></span
+                  ><span class="ll-kpi-delta is-up">▲ 14% vs Sep</span
+                  ><svg
+                    class="ll-sparkline"
+                    data-spark="120,132,128,150,141,163,170,186"
+                    aria-hidden="true"
+                  ></svg>
+                </div>
+              </section>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <section class="ll-panel" data-load aria-label="Applications logged">
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div class="ll-kpi" data-skeleton-target>
+                  <div class="ll-kpi-top">
+                    <span class="ll-kpi-label">Applications logged</span
+                    ><span class="ll-icon-tile is-accent"
+                      ><i class="bi bi-file-earmark-check" aria-hidden="true"></i
+                    ></span>
+                  </div>
+                  <span class="ll-kpi-val"><span data-count="64">64</span></span
+                  ><span class="ll-kpi-delta is-up">▲ 9% vs Sep</span
+                  ><svg class="ll-sparkline" data-spark="40,44,51,48,55,58,59,64" aria-hidden="true"></svg>
+                </div>
+              </section>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <section class="ll-panel" data-load aria-label="Sanctioned value">
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div class="ll-kpi" data-skeleton-target>
+                  <div class="ll-kpi-top">
+                    <span class="ll-kpi-label">Sanctioned value</span
+                    ><span class="ll-icon-tile is-sage"
+                      ><i class="bi bi-cash-stack" aria-hidden="true"></i
+                    ></span>
+                  </div>
+                  <span class="ll-kpi-val"><span data-money="384000000" data-money-short>₹38.4 Cr</span></span
+                  ><span class="ll-kpi-delta is-up">▲ ₹4.1 Cr</span
+                  ><svg class="ll-sparkline" data-spark="22,25,24,29,31,30,34,38" aria-hidden="true"></svg>
+                </div>
+              </section>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+              <section class="ll-panel" data-load aria-label="Lead → client">
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                </div>
+                <div class="ll-kpi" data-skeleton-target>
+                  <div class="ll-kpi-top">
+                    <span class="ll-kpi-label">Lead → client</span
+                    ><span class="ll-icon-tile"><i class="bi bi-funnel" aria-hidden="true"></i></span>
+                  </div>
+                  <span class="ll-kpi-val">34.4%</span><span class="ll-kpi-delta is-down">▼ 1.2 pts</span
+                  ><svg class="ll-sparkline" data-spark="38,37,36,36,35,35,35,34" aria-hidden="true"></svg>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-xl-8">
+              <section class="ll-panel" data-load aria-label="Disbursed value by month (₹ Cr)">
+                <div class="ll-panel-head">
+                  <h2>Disbursed value by month (₹ Cr)</h2>
+                  <select
+                    class="form-select form-select-sm"
+                    style="inline-size: auto; min-height: 36px"
+                    aria-label="Period"
+                  >
+                    <option>2026</option>
+                    <option>2025</option>
+                  </select>
+                </div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-block mb-3"></div>
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                </div>
+                <div data-skeleton-target>
+                  <div
+                    class="ll-bars"
+                    role="img"
+                    data-bars="18,22,21,26,24,29,31,28,33,36"
+                    data-labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct"
+                    aria-label="Bar chart: disbursed value rising from 18 crore in January to 36 crore in October"
+                  ></div>
+                </div>
+              </section>
+            </div>
+            <div class="col-xl-4">
+              <section class="ll-panel" data-load aria-label="Conversion funnel">
+                <div class="ll-panel-head"><h2>Conversion funnel</h2></div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-40"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                </div>
+                <div data-skeleton-target>
+                  <div class="ll-funnel">
+                    <div>
+                      <span class="ll-funnel-label">Leads</span
+                      ><span class="ll-funnel-bar" style="inline-size: 100%">186</span>
+                    </div>
+                    <div>
+                      <span class="ll-funnel-label">Qualified</span
+                      ><span class="ll-funnel-bar" style="inline-size: 62%">115</span>
+                    </div>
+                    <div>
+                      <span class="ll-funnel-label">Applied</span
+                      ><span class="ll-funnel-bar" style="inline-size: 34%">64</span>
+                    </div>
+                    <div>
+                      <span class="ll-funnel-label">Sanctioned</span
+                      ><span class="ll-funnel-bar" style="inline-size: 24%; background: var(--ll-success)"
+                        >45</span
+                      >
+                    </div>
+                    <div>
+                      <span class="ll-funnel-label">Disbursed</span
+                      ><span class="ll-funnel-bar" style="inline-size: 19%; background: var(--ll-accent)"
+                        >36</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="col-xl-7">
+              <section class="ll-panel" data-load aria-label="Recent leads">
+                <div class="ll-panel-head"><h2>Recent leads</h2></div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-40"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                </div>
+                <div data-skeleton-target>
+                  <div class="table-responsive">
+                    <table class="table ll-table table-hover mb-0">
+                      <caption class="visually-hidden">
+                        Five most recent leads
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Need</th>
+                          <th scope="col" class="text-end">Amount</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">
+                            <span class="d-flex align-items-center gap-2"
+                              ><span class="ll-avatar-initials" aria-hidden="true">RV</span>Rahul Verma</span
+                            >
+                          </th>
+                          <td>First home</td>
+                          <td class="ll-money text-end" data-money="4500000">₹4500000</td>
+                          <td><span class="ll-badge is-info">New</span></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <span class="d-flex align-items-center gap-2"
+                              ><span class="ll-avatar-initials" aria-hidden="true">SP</span>Sneha Pillai</span
+                            >
+                          </th>
+                          <td>Balance transfer</td>
+                          <td class="ll-money text-end" data-money="3800000">₹3800000</td>
+                          <td><span class="ll-badge is-warning">Contacted</span></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <span class="d-flex align-items-center gap-2"
+                              ><span class="ll-avatar-initials" aria-hidden="true">IS</span>Imran Sheikh</span
+                            >
+                          </th>
+                          <td>Self-employed</td>
+                          <td class="ll-money text-end" data-money="9200000">₹9200000</td>
+                          <td><span class="ll-badge is-success">Qualified</span></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <span class="d-flex align-items-center gap-2"
+                              ><span class="ll-avatar-initials" aria-hidden="true">LN</span>Lakshmi
+                              Narayan</span
+                            >
+                          </th>
+                          <td>First home</td>
+                          <td class="ll-money text-end" data-money="6200000">₹6200000</td>
+                          <td><span class="ll-badge is-accent">Client</span></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">
+                            <span class="d-flex align-items-center gap-2"
+                              ><span class="ll-avatar-initials" aria-hidden="true">DJ</span>Deepak Joshi</span
+                            >
+                          </th>
+                          <td>Under construction</td>
+                          <td class="ll-money text-end" data-money="11500000">₹11500000</td>
+                          <td><span class="ll-badge is-success">Qualified</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <a class="ll-link-arrow mt-2" href="admin-leads.html"
+                    >All leads <i class="bi bi-arrow-right" aria-hidden="true"></i
+                  ></a>
+                </div>
+              </section>
+            </div>
+            <div class="col-xl-5">
+              <section class="ll-panel" data-load aria-label="Top lenders this quarter">
+                <div class="ll-panel-head"><h2>Top lenders this quarter</h2></div>
+                <div data-skeleton aria-hidden="true">
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-40"></div>
+                  <div class="ll-skeleton ll-sk-line w-80"></div>
+                  <div class="ll-skeleton ll-sk-line w-60"></div>
+                </div>
+                <div data-skeleton-target>
+                  <div class="table-responsive">
+                    <table class="table ll-table mb-0">
+                      <caption class="visually-hidden">
+                        Lenders by number of sanctions
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Lender</th>
+                          <th scope="col" class="text-end">Files</th>
+                          <th scope="col" class="text-end">Value</th>
+                          <th scope="col"><span class="visually-hidden">Share</span></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Northbank HF</th>
+                          <td class="ll-num text-end">42</td>
+                          <td class="ll-money text-end" data-money="186000000.0" data-money-short>
+                            ₹18.6 Cr
+                          </td>
+                          <td style="min-inline-size: 120px">
+                            <div class="progress" role="presentation">
+                              <div class="progress-bar" style="inline-size: 100%"></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Meridian HF</th>
+                          <td class="ll-num text-end">28</td>
+                          <td class="ll-money text-end" data-money="121000000.0" data-money-short>
+                            ₹12.1 Cr
+                          </td>
+                          <td style="min-inline-size: 120px">
+                            <div class="progress" role="presentation">
+                              <div class="progress-bar" style="inline-size: 67%"></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Coastal Co-op</th>
+                          <td class="ll-num text-end">19</td>
+                          <td class="ll-money text-end" data-money="74000000.0" data-money-short>₹7.4 Cr</td>
+                          <td style="min-inline-size: 120px">
+                            <div class="progress" role="presentation">
+                              <div class="progress-bar" style="inline-size: 45%"></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Ashoka Savings</th>
+                          <td class="ll-num text-end">15</td>
+                          <td class="ll-money text-end" data-money="62000000.0" data-money-short>₹6.2 Cr</td>
+                          <td style="min-inline-size: 120px">
+                            <div class="progress" role="presentation">
+                              <div class="progress-bar" style="inline-size: 36%"></div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculator.js" defer></script>
+    <script src="../assets/js/dashboard.js" defer></script>
+  </body>
+</html>

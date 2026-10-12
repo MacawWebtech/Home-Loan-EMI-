@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile & Settings | Ledgerline Client Portal</title>
+    <meta
+      name="description"
+      content="Update your contact details, income and password, set notification preferences and manage two-step verification for your client portal. Demo data only."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.ledgerline.example/pages/client-profile.html" />
+    <meta name="theme-color" content="#1c2b45" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ledgerline" />
+    <meta property="og:title" content="Profile & Settings | Ledgerline Client Portal" />
+    <meta
+      property="og:description"
+      content="Update your contact details, income and password, set notification preferences and manage two-step verification for your client portal. Demo data only."
+    />
+    <meta property="og:url" content="https://www.ledgerline.example/pages/client-profile.html" />
+    <meta property="og:image" content="https://www.ledgerline.example/assets/images/og-image.webp" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='10'%20fill='%231c2b45'/%3E%3Cpath%20d='M8%2019%20L20%209%20L32%2019'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M12%2018%20V30%20H28%20V18'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'/%3E%3Cpath%20d='M16%2023%20H24'%20stroke='%23e0835a'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+    />
+    <!-- Bootstrap 5.3.3 + Bootstrap Icons 1.11.3 are bundled in assets/vendor (works offline). CDN alternative in documentation. -->
+    <link id="bs-css" rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <script>
+      /* Pre-paint: apply saved theme + direction before first render (prevents flash) */ (function () {
+        try {
+          var d = document.documentElement,
+            t = localStorage.getItem("ll-theme"),
+            r = localStorage.getItem("ll-dir");
+          d.setAttribute(
+            "data-theme",
+            t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
+          );
+          if (r === "rtl") {
+            d.setAttribute("dir", "rtl");
+            var l = document.getElementById("bs-css");
+            l.href = l.href.replace("bootstrap.min.css", "bootstrap.rtl.min.css");
+          }
+        } catch (e) {}
+        document.addEventListener(
+          "error",
+          function (e) {
+            var i = e.target;
+            if (i && i.tagName === "IMG" && i.dataset.fallback && !i.dataset.fell) {
+              i.dataset.fell = "1";
+              i.removeAttribute("srcset");
+              i.src = i.dataset.fallback;
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Ledgerline Home Loan Advisors",
+        "description": "Independent home loan EMI planning, lender comparison and refinancing advice.",
+        "url": "https://www.ledgerline.example/",
+        "logo": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "image": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "telephone": "+91 44 4000 1234",
+        "email": "hello@ledgerline.example",
+        "priceRange": "Free first consultation",
+        "areaServed": "IN",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4th Floor, 23/12, Cathedral Garden Rd, Nungambakkam",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600034",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1280" },
+        "openingHours": "Mo-Sa 09:30-18:30"
+      }
+    </script>
+  </head>
+  <body class="ll-dash">
+    <a class="ll-skip" href="#main">Skip to main content</a>
+    <div class="ll-app">
+      <aside class="ll-sidebar" id="ll-sidebar" aria-label="Client navigation">
+        <div class="ll-sidebar-head">
+          <a class="ll-brand" href="../index.html" aria-label="Ledgerline home"
+            ><svg class="ll-brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" width="38" height="38" rx="10" fill="currentColor" opacity=".08" />
+              <path
+                d="M7 19 L20 8 L33 19"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11 18 V31 H29 V18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 23 H25 M15 27 H22"
+                stroke="#a84c25"
+                stroke-width="2.4"
+                stroke-linecap="round" /></svg><span class="ll-brand-name">Ledgerline<small>Client portal</small></span></a
+          ><button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Close menu"
+          >
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav aria-label="Dashboard">
+          <div class="ll-side-label">My loan</div>
+          <ul class="ll-side-nav pt-0">
+            <li>
+              <a href="client-dashboard.html"
+                ><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Overview</span></a
+              >
+            </li>
+            <li>
+              <a href="client-application.html"
+                ><i class="bi bi-signpost-split" aria-hidden="true"></i><span>Application status</span></a
+              >
+            </li>
+            <li>
+              <a href="client-repayment.html"
+                ><i class="bi bi-calculator" aria-hidden="true"></i><span>EMI &amp; repayment</span></a
+              >
+            </li>
+            <li>
+              <a href="client-documents.html"
+                ><i class="bi bi-folder2-open" aria-hidden="true"></i><span>Documents</span
+                ><span class="ll-badge is-warning">2</span></a
+              >
+            </li>
+            <li>
+              <a href="client-bookings.html"
+                ><i class="bi bi-calendar2-week" aria-hidden="true"></i><span>Consultations</span></a
+              >
+            </li>
+            <li>
+              <a href="client-messages.html"
+                ><i class="bi bi-chat-left-text" aria-hidden="true"></i><span>Messages</span
+                ><span class="ll-badge is-accent">3</span></a
+              >
+            </li>
+            <li>
+              <a href="client-profile.html" class="active" aria-current="page"
+                ><i class="bi bi-person-gear" aria-hidden="true"></i><span>Profile &amp; settings</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="ll-side-foot">
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start" href="admin-dashboard.html"
+            ><i class="bi bi-shield-lock" aria-hidden="true"></i>Admin demo</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="../index.html"
+            ><i class="bi bi-house" aria-hidden="true"></i>Back to website</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="login.html"
+            ><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a
+          >
+        </div>
+      </aside>
+      <div class="ll-side-backdrop" aria-hidden="true"></div>
+      <div class="ll-app-main">
+        <header class="ll-topbar">
+          <button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+          <form class="ll-topbar-search d-none d-md-block" role="search" action="#">
+            <i class="bi bi-search" aria-hidden="true"></i
+            ><label class="visually-hidden" for="top-q">Search</label
+            ><input class="form-control" id="top-q" type="search" placeholder="Search documents, messages…" />
+          </form>
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <button
+              type="button"
+              class="btn btn-icon"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark mode"
+            >
+              <i class="bi bi-moon-stars" aria-hidden="true"></i></button
+            ><button
+              type="button"
+              class="btn btn-icon"
+              data-rtl-toggle
+              aria-pressed="false"
+              aria-label="Switch to right-to-left layout"
+            >
+              <i class="bi bi-text-right" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-icon position-relative"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Notifications, 3 unread"
+              >
+                <i class="bi bi-bell" aria-hidden="true"></i
+                ><span
+                  class="position-absolute top-0 start-100 translate-middle p-1 rounded-circle"
+                  style="background: var(--ll-accent)"
+                  ><span class="visually-hidden">unread</span></span
+                >
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow" style="min-inline-size: 300px">
+                <li><h2 class="dropdown-header">Notifications</h2></li>
+                <li>
+                  <a class="dropdown-item py-2" href="client-application.html"
+                    ><strong class="d-block small">Credit review started</strong
+                    ><small class="text-muted">Northbank HF · 2 hours ago</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="client-documents.html"
+                    ><strong class="d-block small">Bank statement needs a re-upload</strong
+                    ><small class="text-muted">Yesterday</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="client-bookings.html"
+                    ><strong class="d-block small">Consultation confirmed</strong
+                    ><small class="text-muted">Thu, 11:30</small></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-ll-ghost d-flex align-items-center gap-2 px-2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="ll-avatar-initials" aria-hidden="true">AK</span
+                ><span class="d-none d-lg-inline text-start lh-sm"
+                  ><strong class="d-block small">Ananya Krishnan</strong
+                  ><small class="text-muted">Client · LL-24-0817</small></span
+                ><i class="bi bi-chevron-down small" aria-hidden="true"></i
+                ><span class="visually-hidden">Account menu</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li><a class="dropdown-item" href="client-profile.html">Profile &amp; settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main id="main" class="ll-app-content">
+          <div class="ll-app-title">
+            <div>
+              <h1>Profile &amp; settings</h1>
+              <p>Keep your contact details and income up to date.</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2"></div>
+          </div>
+          <div class="row g-3">
+            <div class="col-xl-8 d-flex flex-column gap-3">
+              <section class="ll-panel h-auto" aria-labelledby="pf-title">
+                <div class="ll-panel-head"><h2 id="pf-title">Personal details</h2></div>
+                <form data-validate data-toast="Profile saved." action="#" method="post">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="pf-first">First name</label
+                      ><input
+                        class="form-control"
+                        id="pf-first"
+                        value="Ananya"
+                        required
+                        autocomplete="given-name"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="pf-last">Last name</label
+                      ><input
+                        class="form-control"
+                        id="pf-last"
+                        value="Krishnan"
+                        required
+                        autocomplete="family-name"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="pf-email">Email</label
+                      ><input
+                        class="form-control"
+                        id="pf-email"
+                        type="email"
+                        value="ananya.k@example.com"
+                        required
+                        autocomplete="email"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="pf-phone">Mobile</label
+                      ><input
+                        class="form-control"
+                        id="pf-phone"
+                        type="tel"
+                        value="98765 43210"
+                        required
+                        pattern="[0-9+ ]{10,15}"
+                        data-msg-pattern="Please use a 10-digit mobile number."
+                        autocomplete="tel"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="pf-emp">Employment</label
+                      ><select class="form-select" id="pf-emp">
+                        <option selected>Salaried</option>
+                        <option>Self-employed professional</option>
+                        <option>Business owner</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="pf-income">Monthly take-home</label>
+                      <div class="input-group">
+                        <span class="input-group-text" data-currency-symbol>₹</span
+                        ><input
+                          class="form-control ll-num"
+                          id="pf-income"
+                          type="number"
+                          value="145000"
+                          min="0"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-ll-primary" type="submit">Save changes</button>
+                    </div>
+                  </div>
+                </form>
+              </section>
+              <section class="ll-panel h-auto" aria-labelledby="sec-title">
+                <div class="ll-panel-head"><h2 id="sec-title">Password &amp; security</h2></div>
+                <form data-validate data-toast="Password updated." action="#" method="post">
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label class="form-label" for="pw-cur">Current password</label
+                      ><input
+                        class="form-control"
+                        id="pw-cur"
+                        type="password"
+                        required
+                        autocomplete="current-password"
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label" for="pw-new">New password</label
+                      ><input
+                        class="form-control"
+                        id="pw-new"
+                        type="password"
+                        required
+                        minlength="8"
+                        autocomplete="new-password"
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label" for="pw-new2">Confirm</label
+                      ><input
+                        class="form-control"
+                        id="pw-new2"
+                        type="password"
+                        required
+                        data-match="pw-new"
+                        autocomplete="new-password"
+                      />
+                    </div>
+                    <div class="col-12 d-flex flex-wrap gap-3 align-items-center">
+                      <button class="btn btn-ll-ink" type="submit">Update password</button>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="pf-2fa" checked /><label
+                          class="form-check-label"
+                          for="pf-2fa"
+                          >Two-step verification by SMS</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </section>
+            </div>
+            <div class="col-xl-4 d-flex flex-column gap-3">
+              <section class="ll-panel h-auto" aria-labelledby="nt-title">
+                <div class="ll-panel-head"><h2 id="nt-title">Notifications</h2></div>
+                <div class="d-grid gap-3">
+                  <div class="form-check form-switch justify-content-between flex-row-reverse">
+                    <input class="form-check-input" type="checkbox" id="n1" checked /><label
+                      class="form-check-label"
+                      for="n1"
+                      >Application status changes</label
+                    >
+                  </div>
+                  <div class="form-check form-switch justify-content-between flex-row-reverse">
+                    <input class="form-check-input" type="checkbox" id="n2" checked /><label
+                      class="form-check-label"
+                      for="n2"
+                      >Document requests</label
+                    >
+                  </div>
+                  <div class="form-check form-switch justify-content-between flex-row-reverse">
+                    <input class="form-check-input" type="checkbox" id="n3" checked /><label
+                      class="form-check-label"
+                      for="n3"
+                      >WhatsApp reminders</label
+                    >
+                  </div>
+                  <div class="form-check form-switch justify-content-between flex-row-reverse">
+                    <input class="form-check-input" type="checkbox" id="n4" /><label
+                      class="form-check-label"
+                      for="n4"
+                      >Monthly rate newsletter</label
+                    >
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-ll-outline btn-sm mt-3"
+                  data-save-toast="Notification preferences saved."
+                >
+                  Save preferences
+                </button>
+              </section>
+              <section class="ll-panel h-auto" aria-labelledby="ap-title">
+                <div class="ll-panel-head"><h2 id="ap-title">Appearance</h2></div>
+                <p class="small">Theme and text direction are saved on this device.</p>
+                <div class="d-flex gap-2">
+                  <button
+                    type="button"
+                    class="btn btn-ll-outline btn-sm"
+                    data-theme-toggle
+                    aria-pressed="false"
+                    aria-label="Switch to dark mode"
+                  >
+                    <i class="bi bi-moon-stars" aria-hidden="true"></i></button
+                  ><span class="small align-self-center">Light / dark</span>
+                </div>
+              </section>
+              <section
+                class="ll-panel h-auto"
+                aria-labelledby="dz-title"
+                style="border-color: var(--ll-danger-soft)"
+              >
+                <div class="ll-panel-head"><h2 id="dz-title">Delete account</h2></div>
+                <p class="small">
+                  Removes your documents and history after your loan closes. This can't be undone.
+                </p>
+                <button
+                  type="button"
+                  class="btn btn-sm"
+                  style="color: var(--ll-danger); border: 1px solid var(--ll-danger)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#del-modal"
+                >
+                  Request deletion
+                </button>
+              </section>
+            </div>
+          </div>
+          <div class="modal fade" id="del-modal" tabindex="-1" aria-labelledby="del-title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title" id="del-title">Delete your account?</h2>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    We'll keep the records your lender legally needs and delete the rest within 30 days. Your
+                    advisor will confirm by email.
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-ll-outline" data-bs-dismiss="modal">
+                    Keep my account</button
+                  ><button
+                    type="button"
+                    class="btn btn-ll-primary"
+                    data-bs-dismiss="modal"
+                    data-save-toast="Deletion request sent to your advisor."
+                  >
+                    Yes, request deletion
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculator.js" defer></script>
+    <script src="../assets/js/dashboard.js" defer></script>
+  </body>
+</html>

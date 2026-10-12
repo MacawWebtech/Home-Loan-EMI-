@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leads & Users | Ledgerline Admin</title>
+    <meta
+      name="description"
+      content="Search, filter and manage every lead and user from website forms, calculators and referrals. Add leads, assign advisors and export to CSV. Sample data."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://www.ledgerline.example/pages/admin-leads.html" />
+    <meta name="theme-color" content="#1c2b45" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ledgerline" />
+    <meta property="og:title" content="Leads & Users | Ledgerline Admin" />
+    <meta
+      property="og:description"
+      content="Search, filter and manage every lead and user from website forms, calculators and referrals. Add leads, assign advisors and export to CSV. Sample data."
+    />
+    <meta property="og:url" content="https://www.ledgerline.example/pages/admin-leads.html" />
+    <meta property="og:image" content="https://www.ledgerline.example/assets/images/og-image.webp" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='10'%20fill='%231c2b45'/%3E%3Cpath%20d='M8%2019%20L20%209%20L32%2019'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M12%2018%20V30%20H28%20V18'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'/%3E%3Cpath%20d='M16%2023%20H24'%20stroke='%23e0835a'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+    />
+    <!-- Bootstrap 5.3.3 + Bootstrap Icons 1.11.3 are bundled in assets/vendor (works offline). CDN alternative in documentation. -->
+    <link id="bs-css" rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <script>
+      /* Pre-paint: apply saved theme + direction before first render (prevents flash) */ (function () {
+        try {
+          var d = document.documentElement,
+            t = localStorage.getItem("ll-theme"),
+            r = localStorage.getItem("ll-dir");
+          d.setAttribute(
+            "data-theme",
+            t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
+          );
+          if (r === "rtl") {
+            d.setAttribute("dir", "rtl");
+            var l = document.getElementById("bs-css");
+            l.href = l.href.replace("bootstrap.min.css", "bootstrap.rtl.min.css");
+          }
+        } catch (e) {}
+        document.addEventListener(
+          "error",
+          function (e) {
+            var i = e.target;
+            if (i && i.tagName === "IMG" && i.dataset.fallback && !i.dataset.fell) {
+              i.dataset.fell = "1";
+              i.removeAttribute("srcset");
+              i.src = i.dataset.fallback;
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Ledgerline Home Loan Advisors",
+        "description": "Independent home loan EMI planning, lender comparison and refinancing advice.",
+        "url": "https://www.ledgerline.example/",
+        "logo": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "image": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "telephone": "+91 44 4000 1234",
+        "email": "hello@ledgerline.example",
+        "priceRange": "Free first consultation",
+        "areaServed": "IN",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4th Floor, 23/12, Cathedral Garden Rd, Nungambakkam",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600034",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1280" },
+        "openingHours": "Mo-Sa 09:30-18:30"
+      }
+    </script>
+  </head>
+  <body class="ll-dash">
+    <a class="ll-skip" href="#main">Skip to main content</a>
+    <div class="ll-app">
+      <aside class="ll-sidebar" id="ll-sidebar" aria-label="Admin navigation">
+        <div class="ll-sidebar-head">
+          <a class="ll-brand" href="../index.html" aria-label="Ledgerline home"
+            ><svg class="ll-brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" width="38" height="38" rx="10" fill="currentColor" opacity=".08" />
+              <path
+                d="M7 19 L20 8 L33 19"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11 18 V31 H29 V18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 23 H25 M15 27 H22"
+                stroke="#a84c25"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              /></svg ><span class="ll-brand-name">Ledgerline<small>Admin console</small></span></a
+          ><button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Close menu"
+          >
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+        </div>
+        <nav aria-label="Dashboard">
+          <div class="ll-side-label">Workspace</div>
+          <ul class="ll-side-nav pt-0">
+            <li>
+              <a href="admin-dashboard.html"
+                ><i class="bi bi-graph-up" aria-hidden="true"></i><span>Analytics</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-leads.html" class="active" aria-current="page"
+                ><i class="bi bi-people" aria-hidden="true"></i><span>Leads &amp; users</span
+                ><span class="ll-badge is-accent">12</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-pipeline.html"
+                ><i class="bi bi-kanban" aria-hidden="true"></i><span>Applications</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-calendar.html"
+                ><i class="bi bi-calendar3" aria-hidden="true"></i><span>Consultations</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-messages.html"
+                ><i class="bi bi-chat-square-dots" aria-hidden="true"></i><span>Messages</span
+                ><span class="ll-badge is-accent">5</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-reports.html"
+                ><i class="bi bi-file-earmark-bar-graph" aria-hidden="true"></i><span>Reports</span></a
+              >
+            </li>
+            <li>
+              <a href="admin-settings.html"
+                ><i class="bi bi-sliders" aria-hidden="true"></i><span>Settings</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="ll-side-foot">
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start" href="client-dashboard.html"
+            ><i class="bi bi-person" aria-hidden="true"></i>View client portal</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="../index.html"
+            ><i class="bi bi-house" aria-hidden="true"></i>Back to website</a
+          >
+          <a class="btn btn-ll-ghost btn-sm w-100 justify-content-start mt-1" href="login.html"
+            ><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a
+          >
+        </div>
+      </aside>
+      <div class="ll-side-backdrop" aria-hidden="true"></div>
+      <div class="ll-app-main">
+        <header class="ll-topbar">
+          <button
+            type="button"
+            class="btn btn-icon ll-side-toggle"
+            data-side-toggle
+            aria-controls="ll-sidebar"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+          <form class="ll-topbar-search d-none d-md-block" role="search" action="#">
+            <i class="bi bi-search" aria-hidden="true"></i
+            ><label class="visually-hidden" for="top-q">Search</label
+            ><input class="form-control" id="top-q" type="search" placeholder="Search leads, applications…" />
+          </form>
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <button
+              type="button"
+              class="btn btn-icon"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Switch to dark mode"
+            >
+              <i class="bi bi-moon-stars" aria-hidden="true"></i></button
+            ><button
+              type="button"
+              class="btn btn-icon"
+              data-rtl-toggle
+              aria-pressed="false"
+              aria-label="Switch to right-to-left layout"
+            >
+              <i class="bi bi-text-right" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-icon position-relative"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Notifications, 3 unread"
+              >
+                <i class="bi bi-bell" aria-hidden="true"></i
+                ><span
+                  class="position-absolute top-0 start-100 translate-middle p-1 rounded-circle"
+                  style="background: var(--ll-accent)"
+                  ><span class="visually-hidden">unread</span></span
+                >
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow" style="min-inline-size: 300px">
+                <li><h2 class="dropdown-header">Notifications</h2></li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-pipeline.html"
+                    ><strong class="d-block small">Credit review started</strong
+                    ><small class="text-muted">Northbank HF · 2 hours ago</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-leads.html"
+                    ><strong class="d-block small">New lead from website</strong
+                    ><small class="text-muted">Yesterday</small></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="admin-calendar.html"
+                    ><strong class="d-block small">Consultation confirmed</strong
+                    ><small class="text-muted">Thu, 11:30</small></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button
+                type="button"
+                class="btn btn-ll-ghost d-flex align-items-center gap-2 px-2"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="ll-avatar-initials" aria-hidden="true">PR</span
+                ><span class="d-none d-lg-inline text-start lh-sm"
+                  ><strong class="d-block small">Priya Raman</strong
+                  ><small class="text-muted">Principal advisor</small></span
+                ><i class="bi bi-chevron-down small" aria-hidden="true"></i
+                ><span class="visually-hidden">Account menu</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li><a class="dropdown-item" href="admin-settings.html">Profile &amp; settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <main id="main" class="ll-app-content">
+          <div class="ll-app-title">
+            <div>
+              <h1>Leads &amp; users</h1>
+              <p>Every enquiry from the website, calculators and referrals.</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+              <button type="button" class="btn btn-ll-outline" data-save-toast="Exported leads.csv">
+                <i class="bi bi-download" aria-hidden="true"></i>Export</button
+              ><button
+                type="button"
+                class="btn btn-ll-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#lead-modal"
+              >
+                <i class="bi bi-plus-lg" aria-hidden="true"></i>Add lead
+              </button>
+            </div>
+          </div>
+          <section class="ll-panel" data-load aria-label="Leads table">
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <div class="position-relative flex-grow-1" style="max-inline-size: 360px">
+                <label class="visually-hidden" for="lead-q">Search leads</label
+                ><i
+                  class="bi bi-search position-absolute"
+                  style="
+                    inset-inline-start: 0.9rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: var(--ll-text-muted);
+                  "
+                  aria-hidden="true"
+                ></i
+                ><input
+                  class="form-control"
+                  id="lead-q"
+                  type="search"
+                  placeholder="Search name, city, email"
+                  data-table-filter="leads-table"
+                  style="padding-inline-start: 2.5rem"
+                />
+              </div>
+              <label class="visually-hidden" for="lead-s">Status</label
+              ><select
+                class="form-select"
+                id="lead-s"
+                data-table-status="leads-table"
+                style="inline-size: auto"
+              >
+                <option value="">All statuses</option>
+                <option value="new">New</option>
+                <option value="contacted">Contacted</option>
+                <option value="qualified">Qualified</option>
+                <option value="client">Client</option>
+                <option value="lost">Lost</option>
+              </select>
+              <span
+                class="ms-auto small text-muted align-self-center"
+                data-table-count="leads-table"
+                aria-live="polite"
+              ></span>
+            </div>
+            <div data-skeleton aria-hidden="true">
+              <div class="ll-skeleton ll-sk-line w-60"></div>
+              <div class="ll-skeleton ll-sk-line w-80"></div>
+              <div class="ll-skeleton ll-sk-line w-40"></div>
+              <div class="ll-skeleton ll-sk-line w-80"></div>
+              <div class="ll-skeleton ll-sk-line w-60"></div>
+              <div class="ll-skeleton ll-sk-line w-60"></div>
+              <div class="ll-skeleton ll-sk-line w-80"></div>
+              <div class="ll-skeleton ll-sk-line w-40"></div>
+            </div>
+            <div data-skeleton-target>
+              <div class="table-responsive">
+                <table class="table ll-table table-hover mb-0" id="leads-table">
+                  <caption class="visually-hidden">
+                    All leads and users
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          data-select-all="leads-table"
+                          aria-label="Select all"
+                        />
+                      </th>
+                      <th scope="col">Name</th>
+                      <th scope="col">City</th>
+                      <th scope="col">Need</th>
+                      <th scope="col" class="text-end">Amount</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Added</th>
+                      <th scope="col"><span class="visually-hidden">Actions</span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-status="new">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Rahul Verma" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">RV</span
+                          ><span
+                            >Rahul Verma<small class="d-block text-muted fw-normal"
+                              >rahul.v@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Chennai</td>
+                      <td>First home</td>
+                      <td class="ll-money text-end" data-money="4500000">₹4500000</td>
+                      <td><span class="ll-badge is-info">New</span></td>
+                      <td class="small text-muted">Today</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Rahul Verma"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="contacted">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Sneha Pillai" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">SP</span
+                          ><span
+                            >Sneha Pillai<small class="d-block text-muted fw-normal"
+                              >sneha.p@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Bengaluru</td>
+                      <td>Balance transfer</td>
+                      <td class="ll-money text-end" data-money="3800000">₹3800000</td>
+                      <td><span class="ll-badge is-warning">Contacted</span></td>
+                      <td class="small text-muted">Today</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Sneha Pillai"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="qualified">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Imran Sheikh" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">IS</span
+                          ><span
+                            >Imran Sheikh<small class="d-block text-muted fw-normal"
+                              >imran.s@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Pune</td>
+                      <td>Self-employed</td>
+                      <td class="ll-money text-end" data-money="9200000">₹9200000</td>
+                      <td><span class="ll-badge is-success">Qualified</span></td>
+                      <td class="small text-muted">Yesterday</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Imran Sheikh"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="client">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Lakshmi Narayan" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">LN</span
+                          ><span
+                            >Lakshmi Narayan<small class="d-block text-muted fw-normal"
+                              >lakshmi.n@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Chennai</td>
+                      <td>First home</td>
+                      <td class="ll-money text-end" data-money="6200000">₹6200000</td>
+                      <td><span class="ll-badge is-accent">Client</span></td>
+                      <td class="small text-muted">2 days</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Lakshmi Narayan"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="qualified">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Deepak Joshi" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">DJ</span
+                          ><span
+                            >Deepak Joshi<small class="d-block text-muted fw-normal"
+                              >deepak.j@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Mumbai</td>
+                      <td>Under construction</td>
+                      <td class="ll-money text-end" data-money="11500000">₹11500000</td>
+                      <td><span class="ll-badge is-success">Qualified</span></td>
+                      <td class="small text-muted">3 days</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Deepak Joshi"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="new">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Kavya Reddy" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">KR</span
+                          ><span
+                            >Kavya Reddy<small class="d-block text-muted fw-normal"
+                              >kavya.r@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Hyderabad</td>
+                      <td>Balance transfer</td>
+                      <td class="ll-money text-end" data-money="2900000">₹2900000</td>
+                      <td><span class="ll-badge is-info">New</span></td>
+                      <td class="small text-muted">3 days</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Kavya Reddy"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="lost">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Arvind Kumar" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">AK</span
+                          ><span
+                            >Arvind Kumar<small class="d-block text-muted fw-normal"
+                              >arvind.k@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Coimbatore</td>
+                      <td>Plot loan</td>
+                      <td class="ll-money text-end" data-money="2400000">₹2400000</td>
+                      <td><span class="ll-badge is-danger">Lost</span></td>
+                      <td class="small text-muted">5 days</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Arvind Kumar"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="contacted">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Nisha George" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">NG</span
+                          ><span
+                            >Nisha George<small class="d-block text-muted fw-normal"
+                              >nisha.g@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Kochi</td>
+                      <td>First home</td>
+                      <td class="ll-money text-end" data-money="5100000">₹5100000</td>
+                      <td><span class="ll-badge is-warning">Contacted</span></td>
+                      <td class="small text-muted">6 days</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Nisha George"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="client">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Vikram Rao" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">VR</span
+                          ><span
+                            >Vikram Rao<small class="d-block text-muted fw-normal"
+                              >vikram.r@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Bengaluru</td>
+                      <td>Self-employed</td>
+                      <td class="ll-money text-end" data-money="14000000">₹14000000</td>
+                      <td><span class="ll-badge is-accent">Client</span></td>
+                      <td class="small text-muted">1 week</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Vikram Rao"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr data-status="new">
+                      <td>
+                        <input class="form-check-input" type="checkbox" aria-label="Select Fatima Begum" />
+                      </td>
+                      <th scope="row">
+                        <span class="d-flex align-items-center gap-2"
+                          ><span class="ll-avatar-initials" aria-hidden="true">FB</span
+                          ><span
+                            >Fatima Begum<small class="d-block text-muted fw-normal"
+                              >fatima.b@example.com</small
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td>Chennai</td>
+                      <td>First home</td>
+                      <td class="ll-money text-end" data-money="3600000">₹3600000</td>
+                      <td><span class="ll-badge is-info">New</span></td>
+                      <td class="small text-muted">1 week</td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-icon btn-sm"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Actions for Fatima Begum"
+                          >
+                            <i class="bi bi-three-dots" aria-hidden="true"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="admin-messages.html">Message</a></li>
+                            <li><a class="dropdown-item" href="admin-pipeline.html">Move to pipeline</a></li>
+                            <li><a class="dropdown-item" href="admin-calendar.html">Book call</a></li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <nav
+                class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2"
+                aria-label="Leads pages"
+              >
+                <small class="text-muted">Showing 1–10 of 186</small>
+                <ul class="pagination pagination-sm mb-0">
+                  <li class="page-item disabled"><span class="page-link">Prev</span></li>
+                  <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
+                  <li class="page-item"><a class="page-link" href="admin-leads.html">2</a></li>
+                  <li class="page-item"><a class="page-link" href="admin-leads.html">Next</a></li>
+                </ul>
+              </nav>
+            </div>
+          </section>
+          <div
+            class="modal fade"
+            id="lead-modal"
+            tabindex="-1"
+            aria-labelledby="lead-modal-title"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <form data-validate data-toast="Lead added and assigned." action="#" method="post">
+                  <div class="modal-header">
+                    <h2 class="modal-title" id="lead-modal-title">Add a lead</h2>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-3">
+                      <div class="col-12">
+                        <label class="form-label" for="nl-name">Name</label
+                        ><input class="form-control" id="nl-name" required />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label" for="nl-mail">Email</label
+                        ><input class="form-control" id="nl-mail" type="email" required />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label" for="nl-ph">Mobile</label
+                        ><input
+                          class="form-control"
+                          id="nl-ph"
+                          type="tel"
+                          pattern="[0-9+ ]{10,15}"
+                          required
+                          data-msg-pattern="Use a 10-digit mobile number."
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label" for="nl-need">Need</label
+                        ><select class="form-select" id="nl-need" required>
+                          <option value="">Choose…</option>
+                          <option>First home</option>
+                          <option>Balance transfer</option>
+                          <option>Self-employed</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label" for="nl-adv">Assign to</label
+                        ><select class="form-select" id="nl-adv">
+                          <option>Priya Raman</option>
+                          <option>Farhan Ali</option>
+                          <option>Meera Sethi</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-ll-outline" data-bs-dismiss="modal">Cancel</button
+                    ><button type="submit" class="btn btn-ll-primary">Add lead</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculator.js" defer></script>
+    <script src="../assets/js/dashboard.js" defer></script>
+  </body>
+</html>

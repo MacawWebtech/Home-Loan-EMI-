@@ -1,0 +1,1382 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home Loan EMI Calculator with Amortization | Ledgerline</title>
+    <meta
+      name="description"
+      content="Free home loan EMI calculator with a year-wise amortization table and chart. Also check prepayment savings, how much you can afford and balance transfer gains."
+    />
+    <link rel="canonical" href="https://www.ledgerline.example/pages/emi-calculator.html" />
+    <meta name="theme-color" content="#1c2b45" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ledgerline" />
+    <meta property="og:title" content="Home Loan EMI Calculator with Amortization | Ledgerline" />
+    <meta
+      property="og:description"
+      content="Free home loan EMI calculator with a year-wise amortization table and chart. Also check prepayment savings, how much you can afford and balance transfer gains."
+    />
+    <meta property="og:url" content="https://www.ledgerline.example/pages/emi-calculator.html" />
+    <meta property="og:image" content="https://www.ledgerline.example/assets/images/og-image.webp" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='10'%20fill='%231c2b45'/%3E%3Cpath%20d='M8%2019%20L20%209%20L32%2019'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3Cpath%20d='M12%2018%20V30%20H28%20V18'%20fill='none'%20stroke='%23f7f2e8'%20stroke-width='2.6'/%3E%3Cpath%20d='M16%2023%20H24'%20stroke='%23e0835a'%20stroke-width='2.6'%20stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+    />
+    <!-- Bootstrap 5.3.3 + Bootstrap Icons 1.11.3 are bundled in assets/vendor (works offline). CDN alternative in documentation. -->
+    <link id="bs-css" rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css" />
+    <script>
+      /* Pre-paint: apply saved theme + direction before first render (prevents flash) */ (function () {
+        try {
+          var d = document.documentElement,
+            t = localStorage.getItem("ll-theme"),
+            r = localStorage.getItem("ll-dir");
+          d.setAttribute(
+            "data-theme",
+            t || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"),
+          );
+          if (r === "rtl") {
+            d.setAttribute("dir", "rtl");
+            var l = document.getElementById("bs-css");
+            l.href = l.href.replace("bootstrap.min.css", "bootstrap.rtl.min.css");
+          }
+        } catch (e) {}
+        document.addEventListener(
+          "error",
+          function (e) {
+            var i = e.target;
+            if (i && i.tagName === "IMG" && i.dataset.fallback && !i.dataset.fell) {
+              i.dataset.fell = "1";
+              i.removeAttribute("srcset");
+              i.src = i.dataset.fallback;
+            }
+          },
+          true,
+        );
+      })();
+    </script>
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Ledgerline Home Loan Advisors",
+        "description": "Independent home loan EMI planning, lender comparison and refinancing advice.",
+        "url": "https://www.ledgerline.example/",
+        "logo": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "image": "https://www.ledgerline.example/assets/images/og-image.webp",
+        "telephone": "+91 44 4000 1234",
+        "email": "hello@ledgerline.example",
+        "priceRange": "Free first consultation",
+        "areaServed": "IN",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4th Floor, 23/12, Cathedral Garden Rd, Nungambakkam",
+          "addressLocality": "Chennai",
+          "addressRegion": "TN",
+          "postalCode": "600034",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1280" },
+        "openingHours": "Mo-Sa 09:30-18:30"
+      }
+    </script>
+  </head>
+  <body class="">
+    <a class="ll-skip" href="#main">Skip to main content</a>
+    <header class="ll-header">
+      <nav class="navbar navbar-expand-xl" aria-label="Main">
+        <div class="container ll-container">
+          <a class="ll-brand" href="../index.html" aria-label="Ledgerline home"
+            ><svg class="ll-brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" width="38" height="38" rx="10" fill="currentColor" opacity=".08" />
+              <path
+                d="M7 19 L20 8 L33 19"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11 18 V31 H29 V18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.4"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 23 H25 M15 27 H22"
+                stroke="#a84c25"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              /></svg ><span class="ll-brand-name">Ledgerline<small>Home Loan Advisors</small></span></a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#ll-nav"
+            aria-controls="ll-nav"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="ll-nav">
+            <ul class="navbar-nav mx-auto mb-0">
+              <li class="nav-item dropdown ll-home-menu">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="../index.html"
+                  id="ll-home-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  >Home<i class="bi bi-chevron-down ll-home-caret" aria-hidden="true"></i
+                ></a>
+                <div class="dropdown-menu ll-home-panel" aria-labelledby="ll-home-toggle">
+                  <p class="ll-home-panel-label">Pick your starting point</p>
+                  <div class="ll-home-cards">
+                    <a class="ll-home-card" href="../index.html"
+                      ><span class="ll-home-thumb"
+                        ><img
+                          src="../assets/images/menu-home-1.jpg"
+                          alt=""
+                          width="520"
+                          height="293"
+                          loading="lazy"
+                          decoding="async" /></span
+                      ><span class="ll-home-body"
+                        ><span class="ll-home-tag">Home 1</span><strong>Buying a home</strong
+                        ><small
+                          >EMI planning, lender comparison and help from application to disbursement.</small
+                        ></span
+                      ><span class="ll-home-go"><i class="bi bi-arrow-right" aria-hidden="true"></i></span></a
+                    ><a class="ll-home-card" href="home-2.html"
+                      ><span class="ll-home-thumb"
+                        ><img
+                          src="../assets/images/menu-home-2.jpg"
+                          alt=""
+                          width="520"
+                          height="293"
+                          loading="lazy"
+                          decoding="async" /></span
+                      ><span class="ll-home-body"
+                        ><span class="ll-home-tag">Home 2</span
+                        ><strong>Refinance &amp; balance transfer</strong
+                        ><small>Already paying a loan? See what a lower rate could save you.</small></span
+                      ><span class="ll-home-go"><i class="bi bi-arrow-right" aria-hidden="true"></i></span
+                    ></a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="emi-calculator.html">EMI Calculator</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <div class="ll-header-actions d-flex align-items-center gap-2">
+              <button
+                type="button"
+                class="btn btn-icon"
+                data-theme-toggle
+                aria-pressed="false"
+                aria-label="Switch to dark mode"
+              >
+                <i class="bi bi-moon-stars" aria-hidden="true"></i></button
+              ><button
+                type="button"
+                class="btn btn-icon"
+                data-rtl-toggle
+                aria-pressed="false"
+                aria-label="Switch to right-to-left layout"
+              >
+                <i class="bi bi-text-right" aria-hidden="true"></i>
+              </button>
+              <a class="btn btn-ll-ghost" href="login.html"
+                ><i class="bi bi-person" aria-hidden="true"></i>Client Login</a
+              >
+              <a class="btn btn-ll-primary" href="contact.html#consultation">Book Free Consultation</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="ll-page-head ll-banner">
+        <div class="ll-banner-media" aria-hidden="true">
+          <img
+            src="../assets/images/emi.jpg"
+            alt=""
+            width="1920"
+            height="900"
+            fetchpriority="high"
+            style="object-position: 60% 50%"
+          />
+        </div>
+        <div class="container ll-container position-relative">
+          <nav aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">EMI Calculator</li>
+            </ol>
+          </nav>
+          <span class="ll-eyebrow">Calculators</span>
+          <h1>Home loan EMI calculator</h1>
+          <p class="ll-lead mb-0">
+            Four calculators in one place. Every result uses the standard formula banks use:
+            <span
+              class="ll-term"
+              tabindex="0"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-title="Equated Monthly Instalment: the fixed amount you pay the bank every month. It covers interest plus part of the loan."
+              >EMI</span
+            >
+            = P × r × (1+r)<sup>n</sup> ÷ ((1+r)<sup>n</sup> − 1).
+          </p>
+        </div>
+      </section>
+
+      <section class="ll-section-sm">
+        <div class="container ll-container">
+          <ul class="nav ll-calc-tabs mb-4" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="tab-emi"
+                data-bs-toggle="tab"
+                data-bs-target="#pane-emi"
+                type="button"
+                role="tab"
+                aria-controls="pane-emi"
+                aria-selected="true"
+              >
+                <i class="bi bi-calculator" aria-hidden="true"></i>EMI &amp; schedule
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-prepay"
+                data-bs-toggle="tab"
+                data-bs-target="#pane-prepay"
+                type="button"
+                role="tab"
+                aria-controls="pane-prepay"
+                aria-selected="false"
+              >
+                <i class="bi bi-lightning-charge" aria-hidden="true"></i>Prepayment impact
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-afford"
+                data-bs-toggle="tab"
+                data-bs-target="#pane-afford"
+                type="button"
+                role="tab"
+                aria-controls="pane-afford"
+                aria-selected="false"
+              >
+                <i class="bi bi-wallet2" aria-hidden="true"></i>Affordability
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-transfer"
+                data-bs-toggle="tab"
+                data-bs-target="#pane-transfer"
+                type="button"
+                role="tab"
+                aria-controls="pane-transfer"
+                aria-selected="false"
+              >
+                <i class="bi bi-arrow-left-right" aria-hidden="true"></i>Balance transfer
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <!-- EMI -->
+            <div
+              class="tab-pane fade show active"
+              id="pane-emi"
+              role="tabpanel"
+              aria-labelledby="tab-emi"
+              tabindex="0"
+            >
+              <div class="row g-4" data-calc-form="emi">
+                <div class="col-lg-4">
+                  <div class="ll-calc-card">
+                    <h2 class="h4 mb-4">Your loan</h2>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="e-amount-n">Loan amount</label
+                        ><output class="ll-field-val" for="e-amount-n" data-val-for="amount" data-kind="money"
+                          >5000000</output
+                        >
+                      </div>
+                      <div class="input-group mb-1">
+                        <span class="input-group-text"><span data-currency-symbol>₹</span></span
+                        ><input
+                          class="form-control ll-num"
+                          type="number"
+                          id="e-amount-n"
+                          data-k="amount"
+                          data-kind="money"
+                          min="100000"
+                          max="100000000"
+                          step="10000"
+                          value="5000000"
+                          inputmode="decimal"
+                        />
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="e-amount"
+                        data-k="amount"
+                        data-kind="money"
+                        min="100000"
+                        max="100000000"
+                        step="10000"
+                        value="5000000"
+                        aria-label="Loan amount slider"
+                      />
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="e-rate-n">Interest rate</label
+                        ><output class="ll-field-val" for="e-rate-n" data-val-for="rate" data-kind="rate"
+                          >8.5</output
+                        >
+                      </div>
+                      <div class="input-group mb-1">
+                        <input
+                          class="form-control ll-num"
+                          type="number"
+                          id="e-rate-n"
+                          data-k="rate"
+                          data-kind="rate"
+                          min="5"
+                          max="18"
+                          step="0.05"
+                          value="8.5"
+                          inputmode="decimal"
+                        /><span class="input-group-text">% p.a.</span>
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="e-rate"
+                        data-k="rate"
+                        data-kind="rate"
+                        min="5"
+                        max="18"
+                        step="0.05"
+                        value="8.5"
+                        aria-label="Interest rate slider"
+                      />
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="e-tenure-n">Tenure</label
+                        ><output class="ll-field-val" for="e-tenure-n" data-val-for="tenure" data-kind="years"
+                          >20</output
+                        >
+                      </div>
+                      <div class="input-group mb-1">
+                        <input
+                          class="form-control ll-num"
+                          type="number"
+                          id="e-tenure-n"
+                          data-k="tenure"
+                          data-kind="years"
+                          min="1"
+                          max="30"
+                          step="1"
+                          value="20"
+                          inputmode="decimal"
+                        /><span class="input-group-text">years</span>
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="e-tenure"
+                        data-k="tenure"
+                        data-kind="years"
+                        min="1"
+                        max="30"
+                        step="1"
+                        value="20"
+                        aria-label="Tenure slider"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <div class="ll-calc-card">
+                    <div class="d-flex flex-wrap gap-4 align-items-center mb-3">
+                      <div class="flex-grow-1">
+                        <span class="ll-calc-label">Monthly EMI</span>
+                        <div class="ll-calc-emi" aria-live="polite">
+                          <span data-out="emi">—</span> <small>/ month</small>
+                        </div>
+                      </div>
+                      <svg
+                        class="ll-donut"
+                        viewBox="0 0 120 120"
+                        role="img"
+                        aria-label="Principal versus interest"
+                      >
+                        <circle class="ll-donut-bg" cx="60" cy="60" r="46" />
+                        <circle class="ll-donut-fg" cx="60" cy="60" r="46" stroke-dasharray="0 289" />
+                        <text class="ll-donut-pct" x="60" y="56">0%</text>
+                        <text x="60" y="74" style="font-size: 8px; font-weight: 500">interest</text>
+                      </svg>
+                    </div>
+                    <div class="row g-3">
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Principal</span
+                          ><span class="ll-stat-value" data-out="principal">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Total interest</span
+                          ><span class="ll-stat-value is-accent" data-out="interest">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Total payable</span
+                          ><span class="ll-stat-value" data-out="total">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Interest vs loan</span
+                          ><span class="ll-stat-value" data-out="ratio">—</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4 mb-2">
+                      <h3 class="h5 mb-0">Year-by-year breakdown</h3>
+                      <div class="d-flex gap-3 small">
+                        <span><span class="ll-swatch is-principal" aria-hidden="true"></span>Principal</span
+                        ><span><span class="ll-swatch is-interest" aria-hidden="true"></span>Interest</span
+                        ><span
+                          ><span
+                            class="ll-swatch"
+                            style="background: var(--ll-success)"
+                            aria-hidden="true"
+                          ></span
+                          >Balance</span
+                        >
+                      </div>
+                    </div>
+                    <svg
+                      class="ll-chart"
+                      data-chart="amort"
+                      role="img"
+                      aria-label="Bar chart of principal and interest paid each year, with a line showing the outstanding balance"
+                    ></svg>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="ll-calc-card">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+                      <h3 class="h5 mb-0" id="amort-title">Amortization schedule</h3>
+                      <div class="d-flex flex-wrap gap-2">
+                        <div class="ll-seg" role="group" aria-label="Schedule view">
+                          <button type="button" data-amort-mode="yearly" aria-pressed="true">Year-wise</button
+                          ><button type="button" data-amort-mode="monthly" aria-pressed="false">
+                            Month-wise
+                          </button>
+                        </div>
+                        <button type="button" class="btn btn-ll-outline btn-sm" data-amort-csv>
+                          <i class="bi bi-download" aria-hidden="true"></i>CSV
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class="ll-table-wrap ll-amort-table"
+                      tabindex="0"
+                      role="region"
+                      aria-labelledby="amort-title"
+                    >
+                      <table class="table ll-table table-striped mb-0">
+                        <thead>
+                          <tr>
+                            <th scope="col">Period</th>
+                            <th scope="col" class="text-end">Principal</th>
+                            <th scope="col" class="text-end">Interest</th>
+                            <th scope="col" class="text-end">Total paid</th>
+                            <th scope="col" class="text-end">Balance</th>
+                          </tr>
+                        </thead>
+                        <tbody data-amort-body></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- PREPAY -->
+            <div
+              class="tab-pane fade"
+              id="pane-prepay"
+              role="tabpanel"
+              aria-labelledby="tab-prepay"
+              tabindex="0"
+            >
+              <span id="prepay" class="visually-hidden">Prepayment calculator</span>
+              <div class="row g-4" data-calc-form="prepay">
+                <div class="col-lg-5">
+                  <div class="ll-calc-card">
+                    <h2 class="h4 mb-4">Loan + prepayment</h2>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="p-amount">Loan amount</label
+                        ><output class="ll-field-val" for="p-amount" data-val-for="amount" data-kind="money"
+                          >5000000</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="p-amount"
+                        data-k="amount"
+                        data-kind="money"
+                        min="500000"
+                        max="50000000"
+                        step="50000"
+                        value="5000000"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>₹5 L</span><span>₹5 Cr</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="p-rate">Interest rate</label
+                        ><output class="ll-field-val" for="p-rate" data-val-for="rate" data-kind="rate"
+                          >8.5</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="p-rate"
+                        data-k="rate"
+                        data-kind="rate"
+                        min="6"
+                        max="14"
+                        step="0.05"
+                        value="8.5"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>6%</span><span>14%</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="p-tenure">Tenure</label
+                        ><output class="ll-field-val" for="p-tenure" data-val-for="tenure" data-kind="years"
+                          >20</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="p-tenure"
+                        data-k="tenure"
+                        data-kind="years"
+                        min="5"
+                        max="30"
+                        step="1"
+                        value="20"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>5</span><span>30</span></div>
+                    </div>
+                    <hr class="my-4" />
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="p-extra">Extra every month</label
+                        ><output class="ll-field-val" for="p-extra" data-val-for="extra" data-kind="money"
+                          >5000</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="p-extra"
+                        data-k="extra"
+                        data-kind="money"
+                        min="0"
+                        max="100000"
+                        step="1000"
+                        value="5000"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>₹0</span><span>₹1 L</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="p-lump">One-time lump sum</label
+                        ><output class="ll-field-val" for="p-lump" data-val-for="lump" data-kind="money"
+                          >200000</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="p-lump"
+                        data-k="lump"
+                        data-kind="money"
+                        min="0"
+                        max="5000000"
+                        step="25000"
+                        value="200000"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>₹0</span><span>₹50 L</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="p-lumpYear">Lump sum paid in year</label
+                        ><output
+                          class="ll-field-val"
+                          for="p-lumpYear"
+                          data-val-for="lumpYear"
+                          data-kind="years"
+                          >3</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="p-lumpYear"
+                        data-k="lumpYear"
+                        data-kind="years"
+                        min="1"
+                        max="15"
+                        step="1"
+                        value="3"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>1</span><span>15</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-7">
+                  <div class="ll-calc-card">
+                    <span class="ll-calc-label">You save in interest</span>
+                    <div
+                      class="ll-calc-emi"
+                      style="color: var(--ll-success)"
+                      aria-live="polite"
+                      data-out="saved"
+                    >
+                      —
+                    </div>
+                    <p class="mt-1">
+                      and finish <strong data-out="months-cut">—</strong> earlier. New tenure:
+                      <strong data-out="new-tenure">—</strong>.
+                    </p>
+                    <div class="row g-3 my-3">
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">EMI (unchanged)</span
+                          ><span class="ll-stat-value" data-out="emi">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Interest without</span
+                          ><span class="ll-stat-value" data-out="base-interest">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Interest with</span
+                          ><span class="ll-stat-value is-good" data-out="new-interest">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Time saved</span
+                          ><span class="ll-stat-value is-accent" data-out="months-cut">—</span>
+                        </div>
+                      </div>
+                    </div>
+                    <h3 class="h6 mt-4">Interest you'll pay</h3>
+                    <div class="mb-1 small d-flex justify-content-between">
+                      <span>Without prepayment</span><span>100%</span>
+                    </div>
+                    <div class="progress mb-3" role="presentation">
+                      <div
+                        class="progress-bar"
+                        style="inline-size: 100%; background: var(--ll-border-strong)"
+                      ></div>
+                    </div>
+                    <div class="mb-1 small">With prepayment</div>
+                    <div class="progress" role="presentation">
+                      <div
+                        class="progress-bar"
+                        data-prepay-bar
+                        style="inline-size: 70%; background: var(--ll-success)"
+                      ></div>
+                    </div>
+                    <p class="small text-muted mt-4 mb-0">
+                      <i class="bi bi-info-circle me-1" aria-hidden="true"></i>Floating-rate home loans have
+                      no prepayment penalty in India. Check your sanction letter if your rate is fixed.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- AFFORD -->
+            <div
+              class="tab-pane fade"
+              id="pane-afford"
+              role="tabpanel"
+              aria-labelledby="tab-afford"
+              tabindex="0"
+            >
+              <span id="afford" class="visually-hidden">Affordability calculator</span>
+              <div class="row g-4" data-calc-form="afford">
+                <div class="col-lg-5">
+                  <div class="ll-calc-card">
+                    <h2 class="h4 mb-4">Your income</h2>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="a-income-n">Take-home pay per month</label
+                        ><output class="ll-field-val" for="a-income-n" data-val-for="income" data-kind="money"
+                          >120000</output
+                        >
+                      </div>
+                      <div class="input-group mb-1">
+                        <span class="input-group-text"><span data-currency-symbol>₹</span></span
+                        ><input
+                          class="form-control ll-num"
+                          type="number"
+                          id="a-income-n"
+                          data-k="income"
+                          data-kind="money"
+                          min="20000"
+                          max="2000000"
+                          step="1000"
+                          value="120000"
+                          inputmode="decimal"
+                        />
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="a-income"
+                        data-k="income"
+                        data-kind="money"
+                        min="20000"
+                        max="2000000"
+                        step="1000"
+                        value="120000"
+                        aria-label="Take-home pay per month slider"
+                      />
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="a-existing-n">Existing EMIs per month</label
+                        ><output
+                          class="ll-field-val"
+                          for="a-existing-n"
+                          data-val-for="existing"
+                          data-kind="money"
+                          >8000</output
+                        >
+                      </div>
+                      <div class="input-group mb-1">
+                        <span class="input-group-text"><span data-currency-symbol>₹</span></span
+                        ><input
+                          class="form-control ll-num"
+                          type="number"
+                          id="a-existing-n"
+                          data-k="existing"
+                          data-kind="money"
+                          min="0"
+                          max="500000"
+                          step="500"
+                          value="8000"
+                          inputmode="decimal"
+                          aria-describedby="a-existing-help"
+                        />
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="a-existing"
+                        data-k="existing"
+                        data-kind="money"
+                        min="0"
+                        max="500000"
+                        step="500"
+                        value="8000"
+                        aria-label="Existing EMIs per month slider"
+                      />
+                      <div class="form-text" id="a-existing-help">
+                        Car, personal or education loans. Leave credit cards out unless you carry a balance.
+                      </div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="a-savings">Savings for down payment</label
+                        ><output class="ll-field-val" for="a-savings" data-val-for="savings" data-kind="money"
+                          >1500000</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="a-savings"
+                        data-k="savings"
+                        data-kind="money"
+                        min="0"
+                        max="30000000"
+                        step="50000"
+                        value="1500000"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>₹0</span><span>₹3 Cr</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="a-rate">Expected rate</label
+                        ><output class="ll-field-val" for="a-rate" data-val-for="rate" data-kind="rate"
+                          >8.5</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="a-rate"
+                        data-k="rate"
+                        data-kind="rate"
+                        min="6"
+                        max="14"
+                        step="0.05"
+                        value="8.5"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>6%</span><span>14%</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="a-tenure">Tenure</label
+                        ><output class="ll-field-val" for="a-tenure" data-val-for="tenure" data-kind="years"
+                          >20</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="a-tenure"
+                        data-k="tenure"
+                        data-kind="years"
+                        min="5"
+                        max="30"
+                        step="1"
+                        value="20"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>5</span><span>30</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="a-foir">EMI share of income (FOIR)</label
+                        ><output class="ll-field-val" for="a-foir" data-val-for="foir" data-kind="pct"
+                          >50</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="a-foir"
+                        data-k="foir"
+                        data-kind="pct"
+                        min="30"
+                        max="65"
+                        step="1"
+                        value="50"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>30%</span><span>65%</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-7">
+                  <div class="ll-calc-card">
+                    <span class="ll-calc-label">You can comfortably borrow</span>
+                    <div class="ll-calc-emi" aria-live="polite" data-out="max-loan">—</div>
+                    <p class="mt-1">
+                      That points to a home priced around
+                      <strong class="ll-money" data-out="property">—</strong>.
+                    </p>
+                    <div class="row g-3 my-3">
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Max new EMI</span
+                          ><span class="ll-stat-value" data-out="max-emi">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Down payment</span
+                          ><span class="ll-stat-value" data-out="down">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Bank LTV cap</span
+                          ><span class="ll-stat-value" data-out="ltv">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Property budget</span
+                          ><span class="ll-stat-value is-good" data-out="property">—</span>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="ll-badge is-success" data-out="verdict">—</span>
+                    <p class="small text-muted mt-4 mb-0">
+                      Based on
+                      <span
+                        class="ll-term"
+                        tabindex="0"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        data-bs-title="Fixed Obligations to Income Ratio: the share of your monthly income that goes to EMIs. Most banks cap it at 50 to 60%."
+                        >FOIR</span
+                      >
+                      and RBI
+                      <span
+                        class="ll-term"
+                        tabindex="0"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        data-bs-title="Loan-to-Value: the share of the property price a bank will lend. At 80% LTV you pay the other 20% yourself."
+                        >LTV</span
+                      >
+                      limits (90% up to ₹30 L, 80% up to ₹75 L, 75% above). Lenders also look at age, job
+                      stability and your
+                      <span
+                        class="ll-term"
+                        tabindex="0"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        data-bs-title="Your credit score (300 to 900) from TransUnion CIBIL. Above 750 usually gets the best rates."
+                        >CIBIL</span
+                      >
+                      score.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- TRANSFER -->
+            <div
+              class="tab-pane fade"
+              id="pane-transfer"
+              role="tabpanel"
+              aria-labelledby="tab-transfer"
+              tabindex="0"
+            >
+              <span id="transfer" class="visually-hidden">Balance transfer calculator</span>
+              <div class="row g-4" data-calc-form="transfer">
+                <div class="col-lg-5">
+                  <div class="ll-calc-card">
+                    <h2 class="h4 mb-4">Your current loan</h2>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="t-outstanding">Outstanding amount</label
+                        ><output
+                          class="ll-field-val"
+                          for="t-outstanding"
+                          data-val-for="outstanding"
+                          data-kind="money"
+                          >4500000</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="t-outstanding"
+                        data-k="outstanding"
+                        data-kind="money"
+                        min="500000"
+                        max="30000000"
+                        step="50000"
+                        value="4500000"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>₹5 L</span><span>₹3 Cr</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="t-remaining">Years remaining</label
+                        ><output
+                          class="ll-field-val"
+                          for="t-remaining"
+                          data-val-for="remaining"
+                          data-kind="years"
+                          >16</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="t-remaining"
+                        data-k="remaining"
+                        data-kind="years"
+                        min="3"
+                        max="30"
+                        step="1"
+                        value="16"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>3</span><span>30</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="t-oldRate">Current rate</label
+                        ><output class="ll-field-val" for="t-oldRate" data-val-for="oldRate" data-kind="rate"
+                          >9.6</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="t-oldRate"
+                        data-k="oldRate"
+                        data-kind="rate"
+                        min="7"
+                        max="14"
+                        step="0.05"
+                        value="9.6"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>7%</span><span>14%</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="t-newRate">New lender rate</label
+                        ><output class="ll-field-val" for="t-newRate" data-val-for="newRate" data-kind="rate"
+                          >8.35</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="t-newRate"
+                        data-k="newRate"
+                        data-kind="rate"
+                        min="7"
+                        max="14"
+                        step="0.05"
+                        value="8.35"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>7%</span><span>14%</span></div>
+                    </div>
+                    <div class="ll-field">
+                      <div class="ll-field-row">
+                        <label for="t-fee">Processing fee</label
+                        ><output class="ll-field-val" for="t-fee" data-val-for="fee" data-kind="pct"
+                          >0.5</output
+                        >
+                      </div>
+                      <input
+                        class="ll-range"
+                        type="range"
+                        id="t-fee"
+                        data-k="fee"
+                        data-kind="pct"
+                        min="0"
+                        max="2"
+                        step="0.05"
+                        value="0.5"
+                      />
+                      <div class="ll-field-range" aria-hidden="true"><span>0%</span><span>2%</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-7">
+                  <div class="ll-calc-card">
+                    <span class="ll-calc-label">Net saving after fees</span>
+                    <div
+                      class="ll-calc-emi"
+                      style="color: var(--ll-success)"
+                      aria-live="polite"
+                      data-out="net"
+                    >
+                      —
+                    </div>
+                    <p class="mt-1">
+                      You'd pay <strong class="ll-money" data-out="monthly-save">—</strong> less every month.
+                    </p>
+                    <div class="row g-3 my-3">
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">EMI now</span
+                          ><span class="ll-stat-value" data-out="old-emi">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">EMI after</span
+                          ><span class="ll-stat-value is-good" data-out="new-emi">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Switching fee</span
+                          ><span class="ll-stat-value" data-out="fee">—</span>
+                        </div>
+                      </div>
+                      <div class="col-6 col-xl-3">
+                        <div class="ll-stat">
+                          <span class="ll-stat-label">Fee recovered in</span
+                          ><span class="ll-stat-value is-accent" data-out="break-even">—</span>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="ll-badge is-success" data-out="transfer-verdict">—</span>
+                    <a class="btn btn-ll-primary mt-4 w-100" href="contact.html#consultation"
+                      >Get a written transfer quote</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="ll-section ll-surface-band" aria-labelledby="how-title">
+        <div class="container ll-container">
+          <div class="row g-5">
+            <div class="col-lg-5">
+              <span class="ll-eyebrow">How it works</span>
+              <h2 id="how-title">The maths, in plain words.</h2>
+              <p>
+                Each month the bank charges interest on what you still owe. Your EMI pays that interest first.
+                Whatever is left reduces the loan.
+              </p>
+              <p>That's why early EMIs are mostly interest, and why prepaying early saves the most.</p>
+            </div>
+            <div class="col-lg-7">
+              <div class="ll-card ll-formula-card">
+                <div
+                  class="ll-formula"
+                  role="math"
+                  aria-label="EMI equals P times r times (1 plus r) to the power n, divided by (1 plus r) to the power n minus 1"
+                >
+                  <span class="ll-formula-lhs">EMI =</span>
+                  <span class="ll-formula-frac"
+                    ><span>P × r × (1 + r)<sup>n</sup></span
+                    ><span>(1 + r)<sup>n</sup> − 1</span></span
+                  >
+                </div>
+                <dl class="row mb-0 ll-formula-terms">
+                  <dt class="col-sm-3 ll-money">P</dt>
+                  <dd class="col-sm-9">Principal: the amount you borrow.</dd>
+                  <dt class="col-sm-3 ll-money">r</dt>
+                  <dd class="col-sm-9">Monthly rate: annual rate ÷ 12 ÷ 100. 8.5% a year → 0.00708.</dd>
+                  <dt class="col-sm-3 ll-money">n</dt>
+                  <dd class="col-sm-9">Number of months: 20 years → 240.</dd>
+                  <dt class="col-sm-3 ll-money">Example</dt>
+                  <dd class="col-sm-9 mb-0">
+                    <span data-money="5000000">₹50,00,000</span> at 8.5% for 20 years =
+                    <strong data-money="43391">₹43,391</strong> a month.
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="ll-section-sm" aria-labelledby="cta-title">
+        <div class="container ll-container">
+          <div class="ll-cta-band ll-ink-band ll-banner">
+            <div class="ll-banner-media" aria-hidden="true">
+              <img
+                src="../assets/images/consultation.jpg"
+                alt=""
+                width="1600"
+                height="700"
+                loading="lazy"
+                decoding="async"
+                style="object-position: 50% 60%"
+              />
+            </div>
+            <div class="ll-cta-house d-none d-lg-block">
+              <svg class="ll-house-line" viewBox="0 0 360 220" aria-hidden="true" focusable="false">
+                <line x1="0" y1="210" x2="360" y2="210" />
+                <polyline points="60,210 60,110 140,50 220,110 220,210" />
+                <polyline points="44,120 140,40 236,120" />
+                <rect x="122" y="150" width="36" height="60" />
+                <rect x="80" y="122" width="30" height="26" />
+                <rect x="170" y="122" width="30" height="26" />
+                <line x1="95" y1="122" x2="95" y2="148" />
+                <line x1="185" y1="122" x2="185" y2="148" />
+                <polyline points="236,210 236,140 300,140 300,210" />
+                <line x1="252" y1="160" x2="284" y2="160" />
+                <line x1="252" y1="176" x2="284" y2="176" />
+                <line x1="252" y1="192" x2="276" y2="192" />
+                <circle cx="320" cy="150" r="22" />
+                <line x1="320" y1="172" x2="320" y2="210" />
+                <line x1="60" y1="216" x2="220" y2="216" stroke-dasharray="4 4" />
+              </svg>
+            </div>
+            <div class="row align-items-center g-4">
+              <div class="col-lg-7">
+                <h2 id="cta-title" class="mb-2">Numbers look right? Let's make them real.</h2>
+                <p class="mb-0 fs-5">
+                  An advisor will check these figures against live lender offers for your profile.
+                </p>
+              </div>
+              <div class="col-lg-5 d-flex flex-wrap gap-2 justify-content-lg-end">
+                <a class="btn btn-ll-primary btn-lg" href="contact.html#consultation"
+                  >Book Free Consultation</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="ll-footer" aria-labelledby="footer-title">
+      <h2 id="footer-title" class="visually-hidden">Site footer</h2>
+      <div class="container ll-container">
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <a class="ll-brand" href="../index.html" aria-label="Ledgerline home"
+              ><svg class="ll-brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                <rect x="1" y="1" width="38" height="38" rx="10" fill="currentColor" opacity=".08" />
+                <path
+                  d="M7 19 L20 8 L33 19"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11 18 V31 H29 V18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M15 23 H25 M15 27 H22"
+                  stroke="#a84c25"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                /></svg
+              ><span class="ll-brand-name">Ledgerline<small>Home Loan Advisors</small></span></a
+            >
+            <p class="mt-3">
+              Independent home loan advisors. We compare 30+ lenders and plan your EMI around your life, not
+              the bank's targets.
+            </p>
+            <ul class="ll-social d-flex gap-2 mt-3">
+              <li>
+                <a href="https://www.linkedin.com/" aria-label="LinkedIn"
+                  ><i class="bi bi-linkedin" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/" aria-label="YouTube"
+                  ><i class="bi bi-youtube" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/" aria-label="Instagram"
+                  ><i class="bi bi-instagram" aria-hidden="true"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://wa.me/914440001234" aria-label="WhatsApp"
+                  ><i class="bi bi-whatsapp" aria-hidden="true"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 col-lg-2">
+            <h2>Services</h2>
+            <ul>
+              <li><a href="service-details.html">Loan comparison</a></li>
+              <li><a href="services.html#affordability">EMI planning</a></li>
+              <li><a href="home-2.html">Refinancing</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 col-lg-2">
+            <h2>Tools</h2>
+            <ul>
+              <li><a href="emi-calculator.html">EMI calculator</a></li>
+              <li><a href="emi-calculator.html#prepay">Prepayment</a></li>
+              <li><a href="emi-calculator.html#afford">Affordability</a></li>
+              <li><a href="client-dashboard.html">Client portal</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 col-lg-2">
+            <h2>Company</h2>
+            <ul>
+              <li><a href="about.html">About us</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="admin-dashboard.html">Admin demo</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3 col-lg-2">
+            <h2>Reach us</h2>
+            <ul>
+              <li>
+                <a href="tel:+914440001234"
+                  ><i class="bi bi-telephone me-2" aria-hidden="true"></i>+91 44 4000 1234</a
+                >
+              </li>
+              <li>
+                <a href="mailto:hello@ledgerline.example"
+                  ><i class="bi bi-envelope me-2" aria-hidden="true"></i>Email us</a
+                >
+              </li>
+              <li>
+                <span class="d-inline-flex align-items-center" style="min-height: 36px"
+                  ><i class="bi bi-clock me-2" aria-hidden="true"></i>Mon–Sat, 9:30–6:30</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="ll-footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2">
+          <span>© <span data-year>2026</span> Ledgerline Advisory Pvt. Ltd. All rights reserved.</span>
+          <span class="d-flex gap-3 flex-wrap"
+            ><a href="coming-soon.html">Privacy</a><a href="coming-soon.html">Terms</a
+            ><a href="coming-soon.html">Grievance officer</a></span
+          >
+        </div>
+      </div>
+    </footer>
+    <button type="button" class="btn btn-icon ll-to-top" aria-label="Back to top">
+      <i class="bi bi-arrow-up" aria-hidden="true"></i>
+    </button>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/calculator.js" defer></script>
+  </body>
+</html>
