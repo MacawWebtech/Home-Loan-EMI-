@@ -1,0 +1,107 @@
+/* ==========================================================================
+   rtl.css — right-to-left adjustments (Arabic / Hebrew)
+   Most layout uses logical properties (inline-start/end), so it flips on its
+   own. When dir="rtl", main.js also swaps Bootstrap for bootstrap.rtl.min.css.
+   This file handles what logical properties cannot: directional icons,
+   transforms, gradients and a few font fallbacks.
+   ========================================================================== */
+
+[dir="rtl"] body {
+  /* add an Arabic/Hebrew web font here, e.g. "Noto Sans Arabic" */
+  font-family: var(--ll-font-body), "Noto Sans Arabic", "Noto Sans Hebrew", Tahoma, sans-serif;
+}
+
+/* Arrows point the reading direction */
+[dir="rtl"] .bi-arrow-right,
+[dir="rtl"] .bi-arrow-right-short,
+[dir="rtl"] .bi-chevron-right,
+[dir="rtl"] .bi-arrow-left,
+[dir="rtl"] .bi-chevron-left,
+[dir="rtl"] .bi-box-arrow-right,
+[dir="rtl"] .bi-send {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+[dir="rtl"] .ll-link-arrow:hover i {
+  transform: scaleX(-1) translateX(4px);
+}
+
+/* Breadcrumb divider */
+[dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+  float: right;
+  padding-left: var(--bs-breadcrumb-item-padding-x);
+  padding-right: 0;
+}
+
+/* Eyebrow rule sits on the reading-start side automatically (flex), nothing needed */
+
+/* Money stays LTR so ₹ 12,34,567 reads correctly inside RTL text */
+[dir="rtl"] .ll-money,
+[dir="rtl"] .ll-num,
+[dir="rtl"] [data-money],
+[dir="rtl"] .ll-field-val,
+[dir="rtl"] .ll-calc-emi,
+[dir="rtl"] input[type="email"],
+[dir="rtl"] input[type="tel"] {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Range inputs stay LTR (min on the left) for numeric consistency */
+[dir="rtl"] .ll-range {
+  direction: ltr;
+}
+[dir="rtl"] .ll-range::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, var(--ll-accent) 0 var(--pct), var(--ll-border) var(--pct) 100%);
+}
+
+/* Hero illustration mirrors */
+[dir="rtl"] .ll-hero-illu,
+[dir="rtl"] .ll-page-head-illu,
+[dir="rtl"] .ll-cta-house {
+  transform: scaleX(-1);
+}
+
+/* Accordion icon sits at reading end */
+[dir="rtl"] .ll-accordion .accordion-button::after {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Charts keep LTR time axis */
+[dir="rtl"] .ll-chart,
+[dir="rtl"] .ll-bars,
+[dir="rtl"] .ll-sparkline {
+  direction: ltr;
+}
+
+/* Dashboard bubbles: tails swap via logical radii already; message alignment flips via flex */
+
+/* Form switch knob in RTL */
+[dir="rtl"] .form-switch .form-check-input {
+  background-position: right center;
+}
+[dir="rtl"] .form-switch .form-check-input:checked {
+  background-position: left center;
+}
+
+/* Numeric figures keep LTR reading order ("₹500 Cr+", "4.9 / 5") but sit at the RTL start edge */
+[dir="rtl"] .ll-trust-num,
+[dir="rtl"] .ll-field-range span,
+[dir="rtl"] .ll-kpi-val,
+[dir="rtl"] .ll-stat-value,
+[dir="rtl"] .ll-price,
+[dir="rtl"] .ll-404-num,
+[dir="rtl"] .ll-countdown .ll-num,
+[dir="rtl"] .ll-card-num,
+[dir="rtl"] .ll-kpi-delta {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+[dir="rtl"] .ll-kpi-delta {
+  text-align: right;
+}
+[dir="rtl"] .ll-kpi-val,
+[dir="rtl"] .ll-stat-value {
+  text-align: right;
+}

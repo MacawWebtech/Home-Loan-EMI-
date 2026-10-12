@@ -1,0 +1,205 @@
+/* ==========================================================================
+   dark-mode.css — dark token overrides
+   Activated by <html data-theme="dark"> (set by main.js from the saved choice
+   or the system preference). Components read tokens, so most of the work is
+   here in the token block.
+   ========================================================================== */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --ll-primary: #c9d6ec; /* ink becomes moonlit blue-white for text-on-dark accents */
+  --ll-primary-rgb: 201, 214, 236;
+  --ll-primary-soft: #dfe7f5;
+  --ll-secondary: #9aa7bb;
+  --ll-accent: #e0835a; /* brighter copper for AA on dark */
+  --ll-accent-hover: #ec9670;
+  --ll-accent-rgb: 224, 131, 90;
+  --ll-success: #8cc4a0;
+  --ll-success-soft: rgba(140, 196, 160, 0.14);
+  --ll-warning: #e6bb62;
+  --ll-warning-soft: rgba(230, 187, 98, 0.14);
+  --ll-danger: #f09a8d;
+  --ll-danger-soft: rgba(240, 154, 141, 0.14);
+  --ll-info-soft: rgba(201, 214, 236, 0.12);
+
+  --ll-bg: #11161f;
+  --ll-surface: #171e2a;
+  --ll-surface-2: #1e2735;
+  --ll-border: #2c3646;
+  --ll-border-strong: #3e4a5d;
+  --ll-grid-line: rgba(201, 214, 236, 0.045);
+
+  --ll-text: #ece6da;
+  --ll-text-muted: #a8b0bf;
+  --ll-text-inverse: #11161f;
+
+  --ll-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --ll-shadow: 0 8px 28px -10px rgba(0, 0, 0, 0.6);
+  --ll-shadow-lg: 0 28px 56px -18px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .ll-header {
+  background: rgba(17, 22, 31, 0.84);
+}
+[data-theme="dark"] .ll-topbar {
+  background: rgba(17, 22, 31, 0.88);
+}
+
+/* Ink bands, footer and auth aside keep a deep navy rather than the light "primary" token */
+[data-theme="dark"] .ll-ink-band,
+[data-theme="dark"] .ll-footer,
+[data-theme="dark"] .ll-auth-aside {
+  background-color: #0b1220;
+  color: #ece6da;
+}
+[data-theme="dark"] .ll-card.ll-ink-band {
+  background-color: #0b1220;
+  border-color: var(--ll-border);
+  color: #ece6da;
+}
+[data-theme="dark"] .ll-card.ll-ink-band h2,
+[data-theme="dark"] .ll-card.ll-ink-band p,
+[data-theme="dark"] .ll-ink-band h2,
+[data-theme="dark"] .ll-ink-band h3,
+[data-theme="dark"] .ll-ink-band p,
+[data-theme="dark"] .ll-auth-aside h2,
+[data-theme="dark"] .ll-auth-aside p,
+[data-theme="dark"] .ll-auth-aside .ll-brand {
+  color: #ece6da;
+}
+[data-theme="dark"] .ll-footer h2,
+[data-theme="dark"] .ll-footer .ll-brand {
+  color: #ece6da;
+}
+
+/* Buttons: primary CTA text stays dark on bright copper for contrast */
+[data-theme="dark"] .btn-ll-primary {
+  --bs-btn-color: #1a0f09;
+  --bs-btn-hover-color: #1a0f09;
+  --bs-btn-active-color: #1a0f09;
+}
+[data-theme="dark"] .btn-ll-light {
+  --bs-btn-bg: #ece6da;
+  --bs-btn-border-color: #ece6da;
+  --bs-btn-color: #0b1220;
+  --bs-btn-hover-bg: #fff;
+}
+[data-theme="dark"] .ll-price-tag,
+[data-theme="dark"] .ll-slot[aria-pressed="true"],
+[data-theme="dark"] .ll-accordion .accordion-button:not(.collapsed)::after,
+[data-theme="dark"] .is-current .ll-stage-dot {
+  color: #1a0f09;
+}
+[data-theme="dark"] .ll-journey li:last-child::before,
+[data-theme="dark"] .is-done .ll-stage-dot {
+  color: #0b1220;
+}
+
+/* Donut and charts */
+[data-theme="dark"] .ll-donut .ll-donut-bg {
+  stroke: #5d7398;
+}
+[data-theme="dark"] .ll-chart .ll-bar-p,
+[data-theme="dark"] .ll-bars span.ll-bar {
+  fill: #5d7398;
+  background: #5d7398;
+}
+[data-theme="dark"] .ll-bars span.ll-bar.is-hi {
+  background: var(--ll-accent);
+}
+[data-theme="dark"] .ll-swatch.is-principal {
+  background: #5d7398;
+}
+[data-theme="dark"] .ll-funnel .ll-funnel-bar {
+  background: #3f5376;
+  color: #ece6da;
+}
+
+/* Form fields */
+[data-theme="dark"] .form-control::placeholder {
+  color: #7b8496;
+}
+[data-theme="dark"] .form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23a8b0bf' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+[data-theme="dark"] .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Skeleton shimmer tone */
+[data-theme="dark"] .ll-skeleton::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+}
+
+/* Tooltip */
+[data-theme="dark"] .tooltip {
+  --bs-tooltip-bg: #ece6da;
+  --bs-tooltip-color: #11161f;
+}
+
+/* Toast */
+[data-theme="dark"] .ll-toast {
+  background: #ece6da;
+  color: #11161f;
+}
+[data-theme="dark"] .ll-toast .bi {
+  color: #3f7356;
+}
+
+/* Images: soften in dark */
+[data-theme="dark"] img:not(.ll-keep) {
+  filter: brightness(0.88) contrast(1.05);
+}
+
+/* Bubbles */
+[data-theme="dark"] .ll-bubble.is-out {
+  background: #2f4469;
+  color: #ece6da;
+}
+[data-theme="dark"] .ll-side-nav a.active {
+  background: #2f4469;
+  color: #ece6da;
+}
+[data-theme="dark"] .ll-side-nav a.active .bi {
+  color: #ece6da;
+}
+[data-theme="dark"] .ll-chip[aria-pressed="true"],
+[data-theme="dark"] .ll-calc-tabs .nav-link.active,
+[data-theme="dark"] .ll-cal button[aria-pressed="true"] {
+  background: #2f4469;
+  border-color: #2f4469;
+  color: #ece6da;
+}
+[data-theme="dark"] .btn-ll-ink {
+  --bs-btn-bg: #2f4469;
+  --bs-btn-border-color: #2f4469;
+  --bs-btn-color: #ece6da;
+  --bs-btn-hover-bg: #3b5582;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-border-color: #3b5582;
+}
+[data-theme="dark"] .btn-ll-outline {
+  --bs-btn-hover-color: #11161f;
+}
+
+/* Newsletter band keeps deep navy in dark mode (primary token is light there) */
+[data-theme="dark"] .ll-newsletter {
+  background-color: #0b1220;
+  color: #ece6da;
+}
+[data-theme="dark"] .ll-newsletter h2 {
+  color: #ece6da;
+}
+
+/* Home menu cards */
+[data-theme="dark"] .ll-home-body strong {
+  color: #ece6da;
+}
+[data-theme="dark"] .ll-home-card.is-current {
+  border-color: #ece6da;
+}
+[data-theme="dark"] .ll-home-go em {
+  background: #ece6da;
+  color: #0b1220;
+}
